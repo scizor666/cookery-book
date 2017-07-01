@@ -1,0 +1,11 @@
+= form_for @recipe, url: {action: 'create'}, html: { class: 'form-recipe' } do |f|
+  %h2.form-recipe-heading= content_for(:header)
+
+  = f.label :name, class: 'sr-only'
+  = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
+
+  - @recipe.ingredients.each do |i|
+    %br
+    = render partial: 'ingredient', locals: { ingredient: i, recipe_form: f }
+  %br
+  = f.submit class: 'btn btn-lg btn-primary btn-block'

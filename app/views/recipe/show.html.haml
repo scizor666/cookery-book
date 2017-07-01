@@ -14,6 +14,6 @@
         %td= i.product.caloricity
     %tr
       %td
-        %b Recipe
+        %b Total
       %td= @recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
       %td= @recipe.caloricity
