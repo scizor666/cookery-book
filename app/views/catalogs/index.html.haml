@@ -1,0 +1,14 @@
+%p#notice= notice
+%h1 Catalogs
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @catalogs.each do |catalog|
+      %tr
+        %td= link_to 'Show', catalog
+        -#%td= link_to 'Edit', edit_catalog_path(catalog)
+        -#%td= link_to 'Destroy', catalog, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+-#= link_to 'New Catalog', new_catalog_path

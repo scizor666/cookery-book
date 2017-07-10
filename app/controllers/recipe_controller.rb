@@ -17,7 +17,7 @@ class RecipeController < ApplicationController
     params = recipe_params
     ingredients = params[:product].each_with_index.with_object([]) do |(product_params, i), ingredients|
       next unless product_params[:name].present? &&
-          product_params[:caloricity].present? && params[:ingredient][i][:weight].present?
+                  product_params[:caloricity].present? && params[:ingredient][i][:weight].present?
       product = Product.new(product_params)
       ingredient = Ingredient.new(params[:ingredient][i])
       ingredient.product = product
@@ -45,6 +45,6 @@ class RecipeController < ApplicationController
       total[:weight] += i.weight
       total[:caloricity] += i.weight * i.product.caloricity
     end
-    result[:caloricity] / result[:weight]
+    (result[:caloricity] / result[:weight]).round(2)
   end
 end

@@ -1,0 +1,11 @@
+= form_with(model: catalog, local: true) do |form|
+  - if catalog.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(catalog.errors.count, "error")
+        prohibited this catalog from being saved:
+      %ul
+        - catalog.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    = form.submit

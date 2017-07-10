@@ -6,6 +6,6 @@
 
   - @recipe.ingredients.each do |i|
     %br
-    = render partial: 'ingredient', locals: { ingredient: i, recipe_form: f }
+    = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }
   %br
   = f.submit class: 'btn btn-lg btn-primary btn-block'

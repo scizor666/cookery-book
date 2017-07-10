@@ -1,0 +1,8 @@
+%p#notice= notice
+= link_to 'Add a new Recipe', new_recipe_path
+- @catalog.recipes.each do |recipe|
+  = render partial: 'recipe/recipe', locals: { recipe: recipe }
+-#= link_to 'Edit', edit_catalog_path(@catalog)
+-#|
+%br
+= link_to 'Back', catalogs_path

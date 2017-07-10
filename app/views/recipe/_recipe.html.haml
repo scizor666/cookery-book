@@ -1,0 +1,19 @@
+%h1
+  = link_to recipe.name, recipe
+%div
+  %h2 Ingredients
+  %table
+    %tr
+      %th Name
+      %th Weight
+      %th Caloricity
+    - recipe.ingredients.each do |i|
+      %tr
+        %td= i.product.name
+        %td= i.weight
+        %td= i.product.caloricity
+    %tr
+      %td
+        %b Total
+      %td= recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
+      %td= recipe.caloricity
