@@ -24,8 +24,16 @@ class RecipeController < ApplicationController
       ingredients << ingredient
     end
     @recipe = Recipe.new(name: params[:name], ingredients: ingredients, caloricity: caloricity(ingredients))
-    @recipe.catalog = default_catalog # TODO change this logic
-    @recipe.save!
+    @recipe.catalog = current_user.catalog
+    respond_to do |format|
+      if @recipe.save # TODO logic above should be reviewed
+        format.html { redirect_to @recipe.catalog, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe.catalog }
+      else
+        format.html { render :new }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def recipe_params

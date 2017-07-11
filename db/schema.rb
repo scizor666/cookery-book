@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170630072226) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_catalogs_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -45,13 +46,12 @@ ActiveRecord::Schema.define(version: 20170630072226) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.integer "catalog_id"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["catalog_id"], name: "index_users_on_catalog_id"
+    t.index ["email"], name: "index_users_on_email"
   end
 
 end

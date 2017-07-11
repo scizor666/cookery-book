@@ -8,9 +8,8 @@
 
 # users
 
-user = User.find_or_initialize_by(email: 'test@test.test')
-user.name = 'Ivan Ivanov'
-user.password = 'qwerty'
+params = { name: 'Ivan Ivanov', email: 'test@test.test', password: 'qwerty', password_confirmation: 'qwerty' }
+user = User.create(params)
 user.catalog = Catalog.create!(user: user)
 user.save!
 
