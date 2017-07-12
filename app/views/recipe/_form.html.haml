@@ -1,14 +1,12 @@
 .row
-  .col-md-6.col-md-offset-3.container
+  .col-md-4.col-md-offset-3.container
     = form_for @recipe, url: {action: 'create'}, html: { class: 'form-recipe' } do |f|
       %h2.form-recipe-heading= content_for(:header)
-
-      = f.label :name, class: 'sr-only'
-      = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
+      .form-group
+        = f.label :name, class: 'sr-only'
+        = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
 
       - @recipe.ingredients.each do |i|
-        %br
         = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }
-      %p
-      .col-md-12.text-center
-        = f.submit class: 'btn btn-lg btn-primary col-md-4'
+      .form-group.col-md-12.text-center
+        = f.submit 'Add', class: 'btn btn-lg btn-primary col-md-4'

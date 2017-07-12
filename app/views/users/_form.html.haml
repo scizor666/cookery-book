@@ -1,5 +1,5 @@
 .row
-  .col-md-6.col-md-offset-3.container
+  .col-md-3.col-md-offset-3.container
     %h1.text-center New user
     = form_for @user do |f|
       - if @user.errors.any?
@@ -8,15 +8,17 @@
           %ul
             - @user.errors.full_messages.each do |msg|
               %li= msg
-
-      = f.label :name, class: 'sr-only'
-      = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
-      = f.label :email, class: 'sr-only'
-      = f.email_field :email, class: 'form-control', placeholder: 'email'
-      = f.label :password, class: 'sr-only'
-      = f.password_field :password, class: 'form-control', placeholder: 'password'
-      = f.label :password_confirmation, class: 'sr-only'
-      = f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation', id: :last
-      %p
+      .form-group
+        = f.label :name, class: 'sr-only control-label'
+        = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
+      .form-group
+        = f.label :email, class: 'sr-only control-label'
+        = f.email_field :email, class: 'form-control', placeholder: 'email'
+      .form-group
+        = f.label :password, class: 'sr-only control-label'
+        = f.password_field :password, class: 'form-control', placeholder: 'password'
+      .form-group
+        = f.label :password_confirmation, class: 'sr-only control-label'
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation', id: :last
       .col-md-12.text-center
         = f.submit 'Sign up', class: 'btn btn-primary col-md-4'
