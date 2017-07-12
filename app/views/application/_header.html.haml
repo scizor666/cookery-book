@@ -1,4 +1,9 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top
-  .container-fluid
-
-    .navbar-header
+%nav.navbar.navbar-inverse.bg-inverse.navbar-toggleable-sm.justify-content-left
+  =link_to 'Cookery Book', root_path, class: 'navbar-brand nav-item'
+  -if logged_in?
+    %button.navbar-toggler.navbar-toggler-right{'data-toggle': 'collapse', 'data-target': '#navbarText'}
+      %span.navbar-toggler-icon
+    %div.navbar-collapse.collapse{id: 'navbarText'}
+      %ul.nav.navbar-nav.ml-auto.w-100.justify-content-end
+        %li.nav-item
+          =link_to 'Sign out', logout_path, method: :delete, class: 'nav-link'
