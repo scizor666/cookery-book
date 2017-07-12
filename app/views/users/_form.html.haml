@@ -17,6 +17,6 @@
       = f.password_field :password, class: 'form-control', placeholder: 'password'
       = f.label :password_confirmation, class: 'sr-only'
       = f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation', id: :last
-
-      .actions
-        = f.submit 'Save', class: 'btn btn-primary'
+      %p
+      .col-md-12.text-center
+        = f.submit 'Sign up', class: 'btn btn-primary col-md-4'
