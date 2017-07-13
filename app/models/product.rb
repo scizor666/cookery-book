@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-  has_many :ingredients
+  has_many :ingredients, autosave: true
 end

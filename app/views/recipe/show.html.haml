@@ -1,3 +1,7 @@
 =render partial: 'recipe/recipe', locals: { recipe: @recipe }
-%br
-= link_to 'Back', @recipe.catalog
+%div
+  = link_to 'Edit', edit_recipe_path(@recipe)
+  |
+  = link_to 'Delete', recipe_path(@recipe), method: :delete
+  |
+  = link_to 'Back', @recipe.catalog

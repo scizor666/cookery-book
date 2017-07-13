@@ -1,4 +1,6 @@
 class RecipeController < ApplicationController
+  before_action :set_recipe, only: %i(show edit update destroy)
+
   def new
     @recipe = Recipe.new
     5.times do
@@ -14,16 +16,7 @@ class RecipeController < ApplicationController
   end
 
   def create
-    params = recipe_params
-    ingredients = params[:product].each_with_index.with_object([]) do |(product_params, i), ingredients|
-      next unless product_params[:name].present? &&
-                  product_params[:caloricity].present? && params[:ingredient][i][:weight].present?
-      product = Product.new(product_params)
-      ingredient = Ingredient.new(params[:ingredient][i])
-      ingredient.product = product
-      ingredients << ingredient
-    end
-    @recipe = Recipe.new(name: params[:name], ingredients: ingredients, caloricity: caloricity(ingredients))
+    @recipe = Recipe.new(recipe_params)
     @recipe.catalog = current_user.catalog
     respond_to do |format|
       if @recipe.save # TODO logic above should be reviewed
@@ -36,10 +29,41 @@ class RecipeController < ApplicationController
     end
   end
 
+  # GET /recipe/1/edit
+  def edit
+  end
+
+  # PATCH/PUT /recipe/1
+  # PATCH/PUT /recipe/1.json
+  def update
+    respond_to do |format|
+      if @recipe.update(recipe_params)
+        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        format.json { render :show, status: :ok, location: @recipe }
+      else
+        format.html { render :edit }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /recipe/1
+  # DELETE /recipe/1.json
+  def destroy
+    @recipe.ingredients.delete_all(:delete_all)
+    @recipe.destroy
+    respond_to do |format|
+      format.html { redirect_to @recipe.catalog, notice: 'Recipe was successfully removed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def recipe_params
-    params.require(:recipe).permit(:name,
-                                   { ingredient: :weight },
-                                   { product: %i(name caloricity) })
+    recipe_params = params.require(:recipe).permit(:name, :id,
+                                                   { ingredient: %i(id weight) },
+                                                   { product: %i(id name caloricity),  })
+    ingredients = combine_ingredients recipe_params.to_h
+    { name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients) }
   end
 
   def default_catalog
@@ -47,6 +71,29 @@ class RecipeController < ApplicationController
   end
 
   private
+
+  # TODO update logic, probably something wrong with data format or even with model
+  def combine_ingredients(params)
+    params[:ingredient].each_with_index.with_object([]) do |(ingredient_params, i), ingredients|
+      if ingredient_params.size == 2
+        ingredient = @recipe.ingredients.find(ingredient_params.shift)
+        ingredient.weight = ingredient_params.shift[:weight]
+        ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
+
+      else
+        next unless ingredient_params[:weight].present? && params[:product][i].present? &&
+                    params[:product][i][:caloricity].present?
+        product = Product.new(params[:product][i])
+        ingredient = Ingredient.new(ingredient_params)
+        ingredient.product = product
+      end
+      ingredients << ingredient
+    end
+  end
+
+  def set_recipe
+    @recipe = Recipe.find_by(id: params[:id])
+  end
 
   def caloricity(ingredients)
     result = ingredients.each.with_object(weight: 0, caloricity: 0) do |i, total|
