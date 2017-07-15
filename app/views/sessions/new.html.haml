@@ -8,6 +8,9 @@
         = f.email_field :email, class: 'form-control'
         = f.label :password
         = f.password_field :password, class: 'form-control'
+        = f.label :remember_me, class: 'checkbox inline' do
+          = f.check_box :remember_me
+          %span Remember me on this computer
       .form-group.col-md-12.text-center
         = f.submit 'Log in', class: 'btn btn-primary col-md-4'
       New user? #{link_to 'Sign up now!', new_user_path}
