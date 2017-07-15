@@ -2,6 +2,9 @@
 %div
   = link_to 'Edit', edit_recipe_path(@recipe)
   |
-  = link_to 'Delete', recipe_path(@recipe), method: :delete
+  -#= link_to 'Delete', recipe_path(@recipe), method: :delete, id: 'delete_recipe'
+  = link_to 'Delete', 'javascript:function()', id: 'delete_recipe'
   |
   = link_to 'Back', @recipe.catalog
+
+%div#recipe_data{data: {recipe: @recipe.to_json}}
