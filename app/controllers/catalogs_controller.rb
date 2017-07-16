@@ -1,5 +1,8 @@
 class CatalogsController < ApplicationController
-  before_action :set_catalog, only: [:show, :edit, :update, :destroy]
+  before_action :set_catalog, only: %i(show edit update destroy)
+  before_action :set_user, only: %i(show edit update destroy)
+  before_action :correct_user, only: :show
+  before_action :admin_user, except: :show
 
   # GET /catalogs
   # GET /catalogs.json
@@ -63,13 +66,17 @@ class CatalogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_catalog
-      @catalog = Catalog.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_catalog
+    @catalog = Catalog.find_by(id: params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def catalog_params
-      params.fetch(:catalog, {})
-    end
+  def set_user
+    @user = @catalog && @catalog.user
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def catalog_params
+    params.fetch(:catalog, {})
+  end
 end

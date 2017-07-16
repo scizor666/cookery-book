@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  has_one :catalog
+  has_one :catalog, dependent: :destroy
 
   has_secure_password
 

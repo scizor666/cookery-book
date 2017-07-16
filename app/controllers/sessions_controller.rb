@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  skip_before_action :authenticate!
+
   def new
     if logged_in?
       redirect_to current_user.catalog
@@ -12,7 +15,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to @user.catalog
+      redirect_back_or @user.catalog
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render :new

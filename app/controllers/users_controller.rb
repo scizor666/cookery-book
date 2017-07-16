@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
+  before_action :correct_user, only: %i(show edit update)
+  before_action :admin_user, only: %i(index destroy)
 
   # GET /users
   # GET /users.json
@@ -66,7 +68,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by(id: params[:id]) || User.new(name: params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def user_params

@@ -8,7 +8,8 @@
 
 # users
 
-params = { name: 'Ivan Ivanov', email: 'test@test.test', password: 'qwerty', password_confirmation: 'qwerty' }
+params = { name: 'Ivan Ivanov', email: 'test@test.test', password: 'qwerty',
+           password_confirmation: 'qwerty', admin: true }
 user = User.create(params)
 user.catalog = Catalog.create!(user: user)
 user.save!

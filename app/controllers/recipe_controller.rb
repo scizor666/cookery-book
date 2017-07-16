@@ -1,5 +1,7 @@
 class RecipeController < ApplicationController
   before_action :set_recipe, only: %i(show edit update destroy)
+  before_action :set_user, only: %i(show edit update destroy)
+  before_action :correct_user, except: %i(new create)
 
   def new
     @recipe = Recipe.new
@@ -93,6 +95,10 @@ class RecipeController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find_by(id: params[:id])
+  end
+
+  def set_user
+    @user = @recipe && @recipe.catalog.user
   end
 
   def caloricity(ingredients)

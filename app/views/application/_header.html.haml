@@ -5,5 +5,12 @@
       %span.navbar-toggler-icon
     %div.navbar-collapse.collapse{id: 'navbarText'}
       %ul.nav.navbar-nav.ml-auto.w-100.justify-content-end
-        %li.nav-item
-          =link_to 'Sign out', logout_path, method: :delete, class: 'nav-link'
+        %li.dropdown
+          %a.dropdown-toggle.nav-link{href: '#', 'data-toggle': 'dropdown'}
+            My Account
+            %span.caret
+          %ul.dropdown-menu
+            %li.nav-item
+              =link_to 'Settings', edit_user_path(current_user)
+            %li.nav-item
+              =link_to 'Sign out', logout_path, method: :delete
