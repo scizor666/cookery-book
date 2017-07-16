@@ -9,8 +9,8 @@
           %a.dropdown-toggle.nav-link{href: '#', 'data-toggle': 'dropdown'}
             My Account
             %span.caret
-          %ul.dropdown-menu
-            %li.nav-item
-              =link_to 'Settings', edit_user_path(current_user)
-            %li.nav-item
-              =link_to 'Sign out', logout_path, method: :delete
+          %ul.dropdown-menu.bg-inverse.header-dropdown
+            %li
+              =link_to 'Settings', edit_user_path(current_user), class: 'nav-link'
+            %li
+              =link_to 'Sign out', logout_path, method: :delete, class: 'nav-link'
