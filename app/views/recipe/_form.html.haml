@@ -1,9 +1,12 @@
-%h2.form-recipe-heading= content_for(:header)
-.form-group
-  = f.label :name, class: 'sr-only'
-  = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
+.row
+  %h2.form-recipe-heading.text-center.col-md-12= content_for(:header)
+.row
+  .col-md-offset-4.col-md-4
+  .form-group.col-md-4
+    = f.label :name, class: 'sr-only'
+    = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
 
 - @recipe.ingredients.each do |i|
   = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }
 .form-group.col-md-12.text-center
-  = f.submit 'Add', class: 'btn btn-lg btn-primary col-md-4'
+  = f.submit class: 'btn btn-lg btn-primary'

@@ -1,5 +1,8 @@
 = recipe_form.fields_for ingredient, index: ingredient.id do |ingredient_form|
-  = render partial: 'recipe/product', locals: { product: ingredient.product, recipe_form: recipe_form }
-  .form-group
-    = ingredient_form.label :weight, class: 'sr-only'
-    = ingredient_form.text_field :weight, class: 'form-control', placeholder: 'weight'
+  %label
+    %b Ingredient
+  .row
+    = render partial: 'recipe/product', locals: { product: ingredient.product, recipe_form: recipe_form }
+    .form-group.col-md-4.col-sm-12
+      = ingredient_form.label :weight, class: 'sr-only'
+      = ingredient_form.text_field :weight, class: 'form-control', placeholder: 'weight'
