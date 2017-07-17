@@ -8,5 +8,11 @@
 
 - @recipe.ingredients.each do |i|
   = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }
+  .row
+    .col
+      %i.fa.fa-minus.fa-2x.pull-right{style: 'color:red'}
+.row.mt-4.mb-2
+  .col
+    %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
 .form-group.col-md-12.text-center
   = f.submit class: 'btn btn-lg btn-primary'
