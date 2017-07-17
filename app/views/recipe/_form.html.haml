@@ -4,15 +4,17 @@
   .col-md-offset-4.col-md-4
   .form-group.col-md-4
     = f.label :name, class: 'sr-only'
-    = f.text_field :name, class: 'form-control', placeholder: 'name', required: true, autofocus: true, id: :first
+    = f.text_field :name, class: 'form-control', placeholder: 'Recipe name', required: true, autofocus: true, id: :first
 
-- @recipe.ingredients.each do |i|
-  = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }
-  .row
-    .col
-      %i.fa.fa-minus.fa-2x.pull-right{style: 'color:red'}
+#ingredients
+  - @recipe.ingredients.each do |ingredient|
+    = render partial: 'recipe/ingredient', locals: { ingredient: ingredient, recipe_form: f }
 .row.mt-4.mb-2
   .col
-    %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
+    = link_to 'javascript:function()', id: 'add_new_ingredient' do
+      %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
 .form-group.col-md-12.text-center
   = f.submit class: 'btn btn-lg btn-primary'
+
+#new_ingredient{style: 'display:none;'}
+  = render partial: 'recipe/ingredient', locals: {ingredient: @recipe.ingredients.first, recipe_form: f}

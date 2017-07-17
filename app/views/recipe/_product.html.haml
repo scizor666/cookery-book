@@ -1,7 +1,7 @@
 = recipe_form.fields_for(product, index: product.id) do |product_form|
   .form-group.col-md-4.col-sm-12
-    = product_form.label :ingredient, class: 'sr-only'
-    = product_form.text_field :name, class: 'form-control', placeholder: 'name'
+    = product_form.label :name
+    = product_form.text_field :name, class: 'form-control', required: true, placeholder: 'name'
   .form-group.col-md-4.col-sm-12
-    = product_form.label :caloricity, class: 'sr-only'
-    = product_form.text_field :caloricity, class: 'form-control', placeholder: 'caloricity', type: :number, step: :any, min: 0
+    = product_form.label :caloricity, 'Caloricity, kcal/100g'
+    = product_form.text_field :caloricity, class: 'form-control', required: true, placeholder: 'caloricity', type: :number, step: :any, min: 0

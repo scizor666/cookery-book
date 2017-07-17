@@ -1,8 +1,13 @@
 = recipe_form.fields_for ingredient, index: ingredient.id do |ingredient_form|
-  %label
-    %b Ingredient
-  .row
-    = render partial: 'recipe/product', locals: { product: ingredient.product, recipe_form: recipe_form }
-    .form-group.col-md-4.col-sm-12
-      = ingredient_form.label :weight, class: 'sr-only'
-      = ingredient_form.text_field :weight, class: 'form-control', placeholder: 'weight', type: :number, step: :any, min: 0
+  %div
+    %label
+      %b Ingredient
+    .row
+      = render partial: 'recipe/product', locals: { product: ingredient.product, recipe_form: recipe_form }
+      .form-group.col-md-4.col-sm-12
+        = ingredient_form.label :weight, 'Weight, g'
+        = ingredient_form.text_field :weight, class: 'form-control', required: true, placeholder: 'weight', type: :number, step: :any, min: 0
+    .row
+      .col
+        = link_to 'javascript:function()', onclick: 'removeChoice($(this))', class: 'remove-ingredient' do
+          %i.fa.fa-minus.fa-2x.pull-right{style: 'color:red'}
