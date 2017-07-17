@@ -4,7 +4,7 @@
   .col-md-offset-4.col-md-4
   .form-group.col-md-4
     = f.label :name, class: 'sr-only'
-    = f.text_field :name, class: 'form-control', placeholder: 'name', autofocus: true, id: :first
+    = f.text_field :name, class: 'form-control', placeholder: 'name', required: true, autofocus: true, id: :first
 
 - @recipe.ingredients.each do |i|
   = render partial: 'recipe/ingredient', locals: { ingredient: i, recipe_form: f }

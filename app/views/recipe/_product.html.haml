@@ -4,4 +4,4 @@
     = product_form.text_field :name, class: 'form-control', placeholder: 'name'
   .form-group.col-md-4.col-sm-12
     = product_form.label :caloricity, class: 'sr-only'
-    = product_form.text_field :caloricity, class: 'form-control', placeholder: 'caloricity'
+    = product_form.text_field :caloricity, class: 'form-control', placeholder: 'caloricity', type: :number, step: :any, min: 0
