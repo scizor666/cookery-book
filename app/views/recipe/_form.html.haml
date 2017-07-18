@@ -1,20 +1,24 @@
 .row
-  %h2.form-recipe-heading.text-center.col-md-12= content_for(:header)
-.row
-  .col-md-offset-4.col-md-4
-  .form-group.col-md-4
-    = f.label :name, class: 'sr-only'
-    = f.text_field :name, class: 'form-control', placeholder: 'Recipe name', required: true, autofocus: true, id: :first
+  .container
+    = form_for @recipe, url: {action: content_for(:action)}, html: { class: 'form-recipe' } do |f|
+      .row
+        %h2.form-recipe-heading.text-center.col-md-12= content_for(:header)
+      .row
+        .col-md-offset-4.col-md-4
+        .form-group.col-md-4
+          = f.label :name, class: 'sr-only'
+          = f.text_field :name, class: 'form-control', placeholder: 'Recipe name', required: true, autofocus: true, id: :first
 
-#ingredients
-  - @recipe.ingredients.each do |ingredient|
-    = render partial: 'recipe/ingredient', locals: { ingredient: ingredient, recipe_form: f }
-.row.mt-4.mb-2
-  .col
-    = link_to 'javascript:function()', id: 'add_new_ingredient' do
-      %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
-.form-group.col-md-12.text-center
-  = f.submit class: 'btn btn-lg btn-primary'
-
-#new_ingredient{style: 'display:none;'}
-  = render partial: 'recipe/ingredient', locals: {ingredient: @recipe.ingredients.first, recipe_form: f}
+      #ingredients
+        - @recipe.ingredients.each do |ingredient|
+          = render partial: 'recipe/ingredient', locals: { ingredient: ingredient, recipe_form: f, custom_id: false }
+      .row.mt-4.mb-2
+        .col
+          = link_to 'javascript:function()', id: 'add_new_ingredient' do
+            %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
+      .form-group.col-md-12.text-center
+        = f.submit class: 'btn btn-lg btn-primary'
+-#TODO really controversial solution, should be fully refactored
+= form_for @recipe, url: 'dummy-url', html: {style: 'display:none;', class: 'dummy-form'} do |f|
+  #new_ingredient
+    = render partial: 'recipe/ingredient', locals: {ingredient: dummy_ingredient, recipe_form: f, custom_id: content_for(:custom_id)}

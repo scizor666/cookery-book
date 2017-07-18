@@ -1,5 +1,4 @@
 - provide :header, 'Edit Recipe'
-.row
-  .container
-    = form_for @recipe, url: {action: :update}, html: { class: 'form-recipe' } do |f|
-      = render 'form', f: f
+- provide :action, :update
+- provide :custom_id, :new_ingredient_id
+= render 'form'

@@ -68,21 +68,25 @@ class RecipeController < ApplicationController
     { name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients) }
   end
 
-  def default_catalog
-    Catalog.find_by(id: 1)
-  end
-
   private
 
   # TODO update logic, probably something wrong with data format or even with model
   def combine_ingredients(params)
     params[:ingredient].each_with_index.with_object([]) do |(ingredient_params, i), ingredients|
-      if ingredient_params.size == 2
-        ingredient = @recipe.ingredients.find(ingredient_params.shift)
-        ingredient.weight = ingredient_params.shift[:weight]
-        ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
-
-      else
+      if ingredient_params.size == 2 # edit path
+        ingredient_id = ingredient_params.shift
+        ingredient_weight = ingredient_params.shift[:weight]
+        ingredient = @recipe.ingredients.find_by(id: ingredient_id)
+        if ingredient # edit existent ingredient
+          ingredient.weight = ingredient_weight
+          ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
+        else # add new ingredient when edit
+          product = Product.new(params[:product][ingredient_id])
+          ingredient = Ingredient.new
+          ingredient.weight = ingredient_weight
+          ingredient.product = product
+        end
+      else # new path
         next unless ingredient_params[:weight].present? && params[:product][i].present? &&
                     params[:product][i][:caloricity].present?
         product = Product.new(params[:product][i])

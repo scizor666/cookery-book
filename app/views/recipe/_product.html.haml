@@ -1,4 +1,4 @@
-= recipe_form.fields_for(product, index: product.id) do |product_form|
+= recipe_form.fields_for(product, index: custom_id ? custom_id : product.id) do |product_form|
   .form-group.col-md-4.col-sm-12
     = product_form.label :name
     = product_form.text_field :name, class: 'form-control', required: true, placeholder: 'name'

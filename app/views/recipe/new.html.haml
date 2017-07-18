@@ -1,5 +1,3 @@
 - provide :header, 'Add a new Recipe'
-.row
-  .container
-    = form_for @recipe, url: {action: :create}, html: { class: 'form-recipe' } do |f|
-      = render 'form', f: f
+- provide :action, :create
+= render 'form'
