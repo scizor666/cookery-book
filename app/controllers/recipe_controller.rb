@@ -52,7 +52,6 @@ class RecipeController < ApplicationController
   # DELETE /recipe/1
   # DELETE /recipe/1.json
   def destroy
-    @recipe.ingredients.delete_all(:delete_all)
     @recipe.destroy
     respond_to do |format|
       format.html { redirect_to @recipe.catalog, notice: 'Recipe was successfully removed.' }
