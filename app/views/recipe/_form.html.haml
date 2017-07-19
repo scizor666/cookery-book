@@ -8,14 +8,23 @@
         .form-group.col-md-4
           = f.label :name, class: 'sr-only'
           = f.text_field :name, class: 'form-control', placeholder: 'Recipe name', required: true, autofocus: true, id: :first
+      .row
+        .col-md-offset-3.col-md-3
+        .form-group.col-md-6
+          = f.label :short_description
+          = f.text_area :short_description, class: 'form-control', rows: 3, maxlength: 150, placeholder: 'short description', required: true
 
       #ingredients
         - @recipe.ingredients.each do |ingredient|
           = render partial: 'recipe/ingredient', locals: { ingredient: ingredient, recipe_form: f, custom_id: false }
-      .row.mt-4.mb-2
+      .row.mt-4
         .col
           = link_to 'javascript:function()', id: 'add_new_ingredient' do
             %i.fa.fa-plus.fa-2x.text-primary.pull-right.top-aligned-row
+      .row.mb-2
+        .col
+          = f.label :description
+          = f.text_area :description, class: 'form-control', rows: 5, placeholder: 'description', required: true
       .form-group.col-md-12.text-center
         = f.submit class: 'btn btn-lg btn-primary'
 -#TODO really controversial solution, should be fully refactored

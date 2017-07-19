@@ -1,3 +1,6 @@
 // Place all the styles related to the Recipe controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+p.recipe-description {
+  white-space: pre-line;
+}

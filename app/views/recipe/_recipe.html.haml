@@ -3,19 +3,29 @@
 %a{href: "#recipe_details_#{recipe.id}",  'data-toggle': 'collapse'} Details
 
 %div.collapse{id: "recipe_details_#{recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
-  %h2 Ingredients
-  %table
-    %tr
-      %th Name
-      %th Weight
-      %th Caloricity
-    - recipe.ingredients.each do |i|
-      %tr
-        %td= i.product.name
-        %td= i.weight
-        %td= i.product.caloricity
-    %tr
-      %td
-        %b Total
-      %td= recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
-      %td= recipe.caloricity
+  .row
+    .col
+      .lead= recipe.short_description
+    .col
+      %h2 Ingredients
+      %table.table.table-striped.lead
+        %thead
+          %tr
+            %th Name
+            %th Weight, g
+            %th kcal/100g
+        %tbody
+          - recipe.ingredients.each do |i|
+            %tr
+              %td= i.product.name
+              %td= i.weight
+              %td= i.product.caloricity
+          %tr
+            %td
+              %h4 Total
+            %td= recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
+            %td
+              %h4= recipe.caloricity
+  .row
+    .col
+      %p.recipe-description.lead= recipe.description
