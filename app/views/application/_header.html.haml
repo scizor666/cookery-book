@@ -1,10 +1,11 @@
-%nav.navbar.navbar-inverse.bg-inverse.navbar-toggleable-sm.justify-content-left
-  =link_to 'Cookery Book', root_path, class: 'navbar-brand nav-item'
+%nav.navbar.navbar-inverse.bg-inverse.navbar-toggleable-sm.sticky-top
   -if logged_in?
     %button.navbar-toggler.navbar-toggler-right{'data-toggle': 'collapse', 'data-target': '#navbarText'}
       %span.navbar-toggler-icon
+  =link_to 'Cookery Book', root_path, class: 'navbar-brand nav-item'
+  -if logged_in?
     %div.navbar-collapse.collapse{id: 'navbarText'}
-      %ul.nav.navbar-nav.ml-auto.w-100.justify-content-end
+      %ul.nav.navbar-nav.ml-auto
         %li.dropdown
           %a.dropdown-toggle.nav-link{href: '#', 'data-toggle': 'dropdown'}
             My Account

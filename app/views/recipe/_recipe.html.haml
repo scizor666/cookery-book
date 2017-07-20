@@ -4,15 +4,15 @@
 
 %div.collapse{id: "recipe_details_#{recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
   .row
-    .col
+    .col-sm-12.col-md-6
       .lead= recipe.short_description
-    .col
+    .col-sm-12.col-md-6
       %h2 Ingredients
       %table.table.table-striped.lead
         %thead
           %tr
             %th Name
-            %th Weight, g
+            %th Weight,g
             %th kcal/100g
         %tbody
           - recipe.ingredients.each do |i|
