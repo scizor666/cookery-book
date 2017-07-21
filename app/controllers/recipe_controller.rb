@@ -21,7 +21,7 @@ class RecipeController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.catalog = current_user.catalog
     respond_to do |format|
-      if @recipe.save # TODO logic above should be reviewed
+      if @recipe.save # TODO: logic above should be reviewed
         format.html { redirect_to @recipe.catalog, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe.catalog }
       else
@@ -32,8 +32,7 @@ class RecipeController < ApplicationController
   end
 
   # GET /recipe/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /recipe/1
   # PATCH/PUT /recipe/1.json
@@ -62,7 +61,7 @@ class RecipeController < ApplicationController
   def recipe_params
     recipe_params = params.require(:recipe).permit(:name, :id, :description, :short_description,
                                                    { ingredient: %i(id weight) },
-                                                   { product: %i(id name caloricity) })
+                                                   product: %i(id name caloricity))
     ingredients = combine_ingredients recipe_params.to_h
     { short_description: recipe_params[:short_description], description: recipe_params[:description],
       name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients) }
@@ -70,7 +69,7 @@ class RecipeController < ApplicationController
 
   private
 
-  # TODO update logic, probably something wrong with data format or even with model
+  # TODO: update logic, probably something wrong with data format or even with model
   def combine_ingredients(params)
     params[:ingredient].each_with_index.with_object([]) do |(ingredient_params, i), ingredients|
       if ingredient_params.size == 2 # edit path

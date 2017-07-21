@@ -1,1 +1,1 @@
-json.partial! "catalogs/catalog", catalog: @catalog
+json.partial! 'catalogs/catalog', catalog: @catalog

@@ -10,52 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719034748) do
-
-  create_table "catalogs", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_catalogs_on_user_id"
+ActiveRecord::Schema.define(version: 20_170_719_034_748) do
+  create_table 'catalogs', force: :cascade do |t|
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_catalogs_on_user_id'
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.float "weight"
-    t.integer "recipe_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_ingredients_on_product_id"
-    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  create_table 'ingredients', force: :cascade do |t|
+    t.float 'weight'
+    t.integer 'recipe_id'
+    t.integer 'product_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['product_id'], name: 'index_ingredients_on_product_id'
+    t.index ['recipe_id'], name: 'index_ingredients_on_recipe_id'
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.float "caloricity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.float 'caloricity'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.float "caloricity"
-    t.integer "catalog_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "description"
-    t.string "short_description"
-    t.index ["catalog_id"], name: "index_recipes_on_catalog_id"
+  create_table 'recipes', force: :cascade do |t|
+    t.string 'name'
+    t.float 'caloricity'
+    t.integer 'catalog_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'description'
+    t.string 'short_description'
+    t.index ['catalog_id'], name: 'index_recipes_on_catalog_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "remember_digest"
-    t.boolean "admin"
-    t.index ["email"], name: "index_users_on_email"
+  create_table 'users', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'email', null: false
+    t.string 'password_digest', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'remember_digest'
+    t.boolean 'admin'
+    t.index ['email'], name: 'index_users_on_email'
   end
-
 end
