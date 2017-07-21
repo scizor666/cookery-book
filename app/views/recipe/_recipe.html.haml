@@ -8,16 +8,16 @@
       .lead= recipe.short_description
     .col-sm-12.col-md-6
       %h2 Ingredients
-      %table.table.table-striped.lead
+      %table.table.table-striped.lead.ingredients-table
         %thead
           %tr
-            %th Name
-            %th Weight,g
-            %th kcal/100g
+            %th.col Name
+            %th.col Weight,g
+            %th.col kcal/100g
         %tbody
           - recipe.ingredients.each do |i|
             %tr
-              %td= i.product.name
+              %td.ingredient-word-breaks= i.product.name
               %td= i.weight
               %td= i.product.caloricity
           %tr

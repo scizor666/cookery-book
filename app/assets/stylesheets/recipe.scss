@@ -4,3 +4,13 @@
 p.recipe-description {
   white-space: pre-line;
 }
+
+.ingredients-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.ingredient-word-breaks {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
