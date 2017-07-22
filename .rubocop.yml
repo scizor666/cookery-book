@@ -1,6 +1,8 @@
+inherit_from: .rubocop_todo.yml
 AllCops:
   Exclude:
-    - 'node_modules/**/*'
+    - node_modules/**/*
+    - vendor/**/*
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -16,4 +18,4 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   Exclude:
-    - 'db/schema.rb'
+    - db/schema.rb

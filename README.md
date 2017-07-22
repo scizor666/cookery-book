@@ -1,4 +1,4 @@
-# README
+# Cookery Book [![Build Status](https://travis-ci.org/scizor666/cookery-book.svg?branch=master)](https://travis-ci.org/scizor666/cookery-book)
 
 Ruby version: 2.4.1
 

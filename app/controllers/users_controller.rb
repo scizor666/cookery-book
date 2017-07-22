@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i(show edit update destroy)
-  before_action :correct_user, only: %i(show edit update)
-  before_action :admin_user, only: %i(index destroy)
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :correct_user, only: %i[show edit update]
+  before_action :admin_user, only: %i[index destroy]
 
   # GET /users
   # GET /users.json
@@ -70,6 +70,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit %i(name email password password_confirmation)
+    params.require(:user).permit %i[name email password password_confirmation]
   end
 end

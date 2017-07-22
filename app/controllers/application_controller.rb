@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate!, except: %i(new create)
+  before_action :authenticate!, except: %i[new create]
   include SessionsHelper
 
   private

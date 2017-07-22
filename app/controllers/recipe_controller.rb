@@ -1,7 +1,7 @@
 class RecipeController < ApplicationController
-  before_action :set_recipe, only: %i(show edit update destroy)
-  before_action :set_user, only: %i(show edit update destroy)
-  before_action :correct_user, except: %i(new create)
+  before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :correct_user, except: %i[new create]
 
   def new
     @recipe = Recipe.new
@@ -60,8 +60,8 @@ class RecipeController < ApplicationController
 
   def recipe_params
     recipe_params = params.require(:recipe).permit(:name, :id, :description, :short_description,
-                                                   { ingredient: %i(id weight) },
-                                                   product: %i(id name caloricity))
+                                                   { ingredient: %i[id weight] },
+                                                   product: %i[id name caloricity])
     ingredients = combine_ingredients recipe_params.to_h
     { short_description: recipe_params[:short_description], description: recipe_params[:description],
       name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients) }
@@ -73,18 +73,7 @@ class RecipeController < ApplicationController
   def combine_ingredients(params)
     params[:ingredient].each_with_index.with_object([]) do |(ingredient_params, i), ingredients|
       if ingredient_params.size == 2 # edit path
-        ingredient_id = ingredient_params.shift
-        ingredient_weight = ingredient_params.shift[:weight]
-        ingredient = @recipe.ingredients.find_by(id: ingredient_id)
-        if ingredient # edit existent ingredient
-          ingredient.weight = ingredient_weight
-          ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
-        else # add new ingredient when edit
-          product = Product.new(params[:product][ingredient_id])
-          ingredient = Ingredient.new
-          ingredient.weight = ingredient_weight
-          ingredient.product = product
-        end
+        ingredient = updated_ingredient(ingredient_params, params)
       else # new path
         next unless ingredient_params[:weight].present? && params[:product][i].present? &&
                     params[:product][i][:caloricity].present?
@@ -94,6 +83,22 @@ class RecipeController < ApplicationController
       end
       ingredients << ingredient
     end
+  end
+
+  def updated_ingredient(ingredient_params, params)
+    ingredient_id = ingredient_params.shift
+    ingredient_weight = ingredient_params.shift[:weight]
+    ingredient = @recipe.ingredients.find_by(id: ingredient_id)
+    if ingredient # edit existent ingredient
+      ingredient.weight = ingredient_weight
+      ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
+    else # add new ingredient when edit
+      product = Product.new(params[:product][ingredient_id])
+      ingredient = Ingredient.new
+      ingredient.weight = ingredient_weight
+      ingredient.product = product
+    end
+    ingredient
   end
 
   def set_recipe
