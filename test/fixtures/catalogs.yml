@@ -1,7 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
+catalog_1:
+  id: 1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:51.994523000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:51.994523000 Z
+    zone: *2
+    time: *3
 
-two:
-  user: two
+catalog_2:
+  id: 2
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:47:34.224978000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:47:34.224978000 Z
+    zone: *2
+    time: *3

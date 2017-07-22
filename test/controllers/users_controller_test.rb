@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:user_1)
+    login(@user.email, 'qwerty') # TODO: remove hardcode
   end
 
   test 'should get index' do
@@ -17,10 +18,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create user' do
     assert_difference('User.count') do
-      post users_url, params: { user: {} }
+      post users_url, params: { user: { name: @user.name,
+                                        email: "#{@user.email}a",
+                                        password: 'qwerty123',
+                                        password_confirmation: 'qwerty123' } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to catalog_url(Catalog.last)
   end
 
   test 'should show user' do
@@ -34,7 +38,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update user' do
-    patch user_url(@user), params: { user: {} }
+    patch user_url(@user), params: { user: { name: "#{@user.name}qwerty",
+                                             email: "#{@user.email}b",
+                                             password: 'qwerty123',
+                                             password_confirmation: 'qwerty123' } }
     assert_redirected_to user_url(@user)
   end
 

@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CatalogsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @catalog = catalogs(:one)
+    @catalog = catalogs(:catalog_1)
+    login(@catalog.user.email, 'qwerty') # TODO: remove hardcode
   end
 
   test 'should get index' do
@@ -16,11 +17,11 @@ class CatalogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create catalog' do
-    assert_difference('Catalog.count') do
+    assert_no_difference('Catalog.count') do
       post catalogs_url, params: { catalog: {} }
     end
 
-    assert_redirected_to catalog_url(Catalog.last)
+    assert_response :success
   end
 
   test 'should show catalog' do

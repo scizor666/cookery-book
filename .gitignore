@@ -22,5 +22,7 @@ db/*.sqlite3-journal
 
 .byebug_history
 /public/packs
-/node_modules
+/public/packs-test
+/public/assets
 /.idea
+/coverage

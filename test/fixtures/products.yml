@@ -1,9 +1,155 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  caloricity: 1.5
+product_1:
+  id: 1
+  name: carrot
+  caloricity: 44.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.008447000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.008447000 Z
+    zone: *2
+    time: *3
 
-two:
-  name: MyString
-  caloricity: 1.5
+product_2:
+  id: 2
+  name: chicken
+  caloricity: 107.7
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.012256000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.012256000 Z
+    zone: *2
+    time: *3
+
+product_3:
+  id: 3
+  name: some ingredient
+  caloricity: 100.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:13:26.648964000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:13:26.648964000 Z
+    zone: *2
+    time: *3
+
+product_4:
+  id: 4
+  name: some other ingredientasdfkjadsf
+  caloricity: 245.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:13:26.654597000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-21 00:36:30.338139000 Z
+    zone: *2
+    time: *3
+
+product_5:
+  id: 5
+  name: Water
+  caloricity: 0.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:58.997219000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:20:58.997219000 Z
+    zone: *2
+    time: *3
+
+product_6:
+  id: 6
+  name: Coffee
+  caloricity: 0.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:59.000182000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:20:59.000182000 Z
+    zone: *2
+    time: *3
+
+product_7:
+  id: 7
+  name: Milk
+  caloricity: 40.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:59.002947000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:20:59.002947000 Z
+    zone: *2
+    time: *3
+
+product_8:
+  id: 8
+  name: растительное масло
+  caloricity: 900.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-20 23:56:41.140982000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-20 23:56:41.140982000 Z
+    zone: *2
+    time: *3
+
+product_9:
+  id: 9
+  name: some
+  caloricity: 23.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.974814000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.974814000 Z
+    zone: *2
+    time: *3
+
+product_10:
+  id: 10
+  name: some more
+  caloricity: 1265.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.979469000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.979469000 Z
+    zone: *2
+    time: *3
+
+product_11:
+  id: 11
+  name: and even more
+  caloricity: 11.0
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.986664000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.986664000 Z
+    zone: *2
+    time: *3

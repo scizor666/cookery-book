@@ -1,11 +1,101 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  caloricity: 1.5
-  catalog: one
+recipe_1:
+  id: 1
+  name: pilov
+  caloricity: 127.7
+  catalog_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.035742000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.035742000 Z
+    zone: *2
+    time: *3
+  description: 
+  short_description: 
 
-two:
-  name: MyString
-  caloricity: 1.5
-  catalog: two
+recipe_2:
+  id: 2
+  name: pizza
+  caloricity: 127.7
+  catalog_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.063207000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.063207000 Z
+    zone: *2
+    time: *3
+  description: 
+  short_description: 
+
+recipe_3:
+  id: 3
+  name: some new recipe
+  caloricity: 382.56
+  catalog_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:13:26.643104000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-21 00:36:30.336131000 Z
+    zone: *2
+    time: *3
+  description: "1. long description here long description here long description here
+    long description here long description here long description here long description
+    here long description here long description here long description here long description
+    here long description here long description here long description here long description
+    here long description here long description here long description here long description
+    here long description here long description here long description here long description
+    here long description here long description here long description here long description
+    here long description here \r\n                                        \r\n                                        2.
+    long description here long description here long description here long description
+    here long description here long description here long description here \r\n                                        \r\n
+    \                                       3. long description here long description
+    here long description here long description here long description here long description
+    here long description here long description here long description here "
+  short_description: short description here short description here short description
+    here short description here short description here short description here short
+    descri
+
+recipe_4:
+  id: 4
+  name: Coffee Latte
+  caloricity: 19.05
+  catalog_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:58.995432000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 18:17:50.506323000 Z
+    zone: *2
+    time: *3
+  description: "1. Add water to coffeemaker.\r\n2. Add coffee to coffeemaker.\r\n3.
+    Add milk into a pitcher.\r\n4. Wait until coffeemaker makes coffee\r\n5. Fill
+    your cup with coffee.\r\n                                                                                "
+  short_description: Coffee with wipped milk.
+
+recipe_5:
+  id: 5
+  name: one simple recipe
+  caloricity: 409.93
+  catalog_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.972356000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.972356000 Z
+    zone: *2
+    time: *3
+  description: and even with long description
+  short_description: which has description

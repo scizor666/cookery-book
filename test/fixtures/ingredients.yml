@@ -1,11 +1,196 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  weight: 1.5
-  recipe: one
-  product: one
+ingredient_1:
+  id: 1
+  weight: 300.0
+  recipe_id: 1
+  product_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.055282000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.055282000 Z
+    zone: *2
+    time: *3
 
-two:
-  weight: 1.5
-  recipe: two
-  product: two
+ingredient_2:
+  id: 2
+  weight: 155.0
+  recipe_id: 1
+  product_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.059857000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.059857000 Z
+    zone: *2
+    time: *3
+
+ingredient_3:
+  id: 3
+  weight: 55.0
+  recipe_id: 2
+  product_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.067883000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.067883000 Z
+    zone: *2
+    time: *3
+
+ingredient_4:
+  id: 4
+  weight: 256.0
+  recipe_id: 2
+  product_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:11:52.071935000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:11:52.071935000 Z
+    zone: *2
+    time: *3
+
+ingredient_5:
+  id: 5
+  weight: 123.0
+  recipe_id: 3
+  product_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:13:26.651780000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:13:26.651780000 Z
+    zone: *2
+    time: *3
+
+ingredient_6:
+  id: 6
+  weight: 123.51
+  recipe_id: 3
+  product_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 04:13:26.656256000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 04:13:26.656256000 Z
+    zone: *2
+    time: *3
+
+ingredient_7:
+  id: 7
+  weight: 150.0
+  recipe_id: 4
+  product_id: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:58.998883000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:20:58.998883000 Z
+    zone: *2
+    time: *3
+
+ingredient_8:
+  id: 8
+  weight: 15.0
+  recipe_id: 4
+  product_id: 6
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:59.001281000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:20:59.001281000 Z
+    zone: *2
+    time: *3
+
+ingredient_9:
+  id: 9
+  weight: 150.0
+  recipe_id: 4
+  product_id: 7
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-19 05:20:59.004368000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-19 05:22:48.452577000 Z
+    zone: *2
+    time: *3
+
+ingredient_10:
+  id: 10
+  weight: 100.0
+  recipe_id: 3
+  product_id: 8
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-20 23:56:41.143911000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-20 23:56:41.143911000 Z
+    zone: *2
+    time: *3
+
+ingredient_11:
+  id: 11
+  weight: 145.0
+  recipe_id: 5
+  product_id: 9
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.976462000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.976462000 Z
+    zone: *2
+    time: *3
+
+ingredient_12:
+  id: 12
+  weight: 123.0
+  recipe_id: 5
+  product_id: 10
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.982750000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.982750000 Z
+    zone: *2
+    time: *3
+
+ingredient_13:
+  id: 13
+  weight: 123.0
+  recipe_id: 5
+  product_id: 11
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2017-07-22 06:50:47.988287000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2017-07-22 06:50:47.988287000 Z
+    zone: *2
+    time: *3
