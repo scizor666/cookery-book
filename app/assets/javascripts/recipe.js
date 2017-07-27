@@ -12,22 +12,22 @@ adjustFirstIngredientRemoveAbility = function () {
     }
 };
 
+function addNewIngredient(ingredient = null) {
+    var clone = document.getElementById('new_ingredient').firstElementChild.cloneNode(true);
+    if (ingredient) {
+        clone.querySelector('.product-id').value = ingredient.product.id;
+        clone.querySelector('.product-name').value = ingredient.product.name;
+        clone.querySelector('.product-caloricity').value = ingredient.product.caloricity;
+        clone.querySelector('.ingredient-weight').value = ingredient.weight;
+    }
+    document.getElementById('ingredients').appendChild(clone);
+    adjustFirstIngredientRemoveAbility();
+}
+
 document.addEventListener('turbolinks:load', function () {
     const controller = document.body.getAttribute('data-controller');
     const action = document.body.getAttribute('data-action');
     if (controller === 'recipe' && (action === 'new' || action === 'edit')) {
-        document.getElementById('add_new_ingredient').addEventListener('click', function () {
-            var clone = document.getElementById('new_ingredient').firstElementChild.cloneNode(true);
-            if (action === 'edit') {
-                var tmp = document.createElement("div");
-                tmp.appendChild(clone);
-                const regexp = new RegExp('new_ingredient_id', 'g');
-                const newId = new Date().getTime();
-                tmp.innerHTML = tmp.innerHTML.replace(regexp, newId);
-                clone = tmp.firstElementChild;
-            }
-            document.getElementById('ingredients').appendChild(clone);
-            adjustFirstIngredientRemoveAbility();
-        });
+        document.getElementById('add_new_ingredient').addEventListener('click', () => addNewIngredient());
     }
 });
