@@ -1,14 +1,24 @@
 removeIngredient = function (element) {
-    return element.parent().parent().parent().remove();
+    element.parent().parent().parent().remove();
+    adjustFirstIngredientRemoveAbility();
 };
 
-document.addEventListener('turbolinks:load', function() {
+adjustFirstIngredientRemoveAbility = function () {
+    var ingredients = document.getElementById('ingredients');
+    if (ingredients.childElementCount === 1) {
+        ingredients.firstElementChild.querySelector('.remove-ingredient').style.display = 'none';
+    } else if (ingredients.childElementCount === 2) {
+        ingredients.firstElementChild.querySelector('.remove-ingredient').style.display = 'block';
+    }
+};
+
+document.addEventListener('turbolinks:load', function () {
     const controller = document.body.getAttribute('data-controller');
     const action = document.body.getAttribute('data-action');
     if (controller === 'recipe' && (action === 'new' || action === 'edit')) {
-        document.getElementById('add_new_ingredient').addEventListener('click', function() {
+        document.getElementById('add_new_ingredient').addEventListener('click', function () {
             var clone = document.getElementById('new_ingredient').firstElementChild.cloneNode(true);
-            if(action === 'edit') {
+            if (action === 'edit') {
                 var tmp = document.createElement("div");
                 tmp.appendChild(clone);
                 const regexp = new RegExp('new_ingredient_id', 'g');
@@ -17,6 +27,7 @@ document.addEventListener('turbolinks:load', function() {
                 clone = tmp.firstElementChild;
             }
             document.getElementById('ingredients').appendChild(clone);
+            adjustFirstIngredientRemoveAbility();
         });
     }
 });
