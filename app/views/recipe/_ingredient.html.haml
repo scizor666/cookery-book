@@ -10,5 +10,5 @@
         = ingredient_form.hidden_field :id, value: ingredient.id
     .row
       .col
-        = link_to 'javascript:function()', onclick: 'removeIngredient($(this))', class: 'remove-ingredient' do
+        = link_to 'javascript:function()', onclick: 'removeIngredient($(this))', class: 'remove-ingredient', style: style do
           %i.fa.fa-minus.fa-2x.pull-right{style: 'color:red'}

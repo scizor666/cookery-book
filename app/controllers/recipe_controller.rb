@@ -5,11 +5,9 @@ class RecipeController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    2.times do
-      ingredient = Ingredient.new
-      ingredient.product = Product.new
-      @recipe.ingredients << ingredient
-    end
+    ingredient = Ingredient.new
+    ingredient.product = Product.new
+    @recipe.ingredients << ingredient
     @recipe
   end
 
