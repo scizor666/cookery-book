@@ -69,36 +69,64 @@ class RecipeController < ApplicationController
 
   private
 
-  # TODO: update logic, probably something wrong with data format or even with model
   def combine_ingredients(params)
+    format_params! params
     params[:ingredient].each_with_index.with_object([]) do |(ingredient_params, i), ingredients|
-      if ingredient_params.size == 2 # edit path
-        ingredient = updated_ingredient(ingredient_params, params)
-      else # new path
-        next unless ingredient_params[:weight].present? && params[:product][i].present? &&
-                    params[:product][i][:caloricity].present?
-        product = Product.new(params[:product][i])
-        ingredient = Ingredient.new(ingredient_params)
-        ingredient.product = product
-      end
-      ingredients << ingredient
+      next unless ingredient_params[:weight].present? && params[:product][i].present? &&
+                  params[:product][i][:caloricity].present?
+      ingredients << combine_ingredient(ingredient_params, params, i)
     end
   end
 
-  def updated_ingredient(ingredient_params, params)
-    ingredient_id = ingredient_params.shift
-    ingredient_weight = ingredient_params.shift[:weight]
-    ingredient = @recipe.ingredients.find_by(id: ingredient_id)
-    if ingredient # edit existent ingredient
-      ingredient.weight = ingredient_weight
-      ingredient.product.attributes = params[:product][ingredient.product_id.to_s]
-    else # add new ingredient when edit
-      product = Product.new(params[:product][ingredient_id])
-      ingredient = Ingredient.new
-      ingredient.weight = ingredient_weight
-      ingredient.product = product
+  def combine_ingredient(ingredient_params, params, index)
+    if ingredient_params[:id].present? # update ingredient
+      update_ingredient(ingredient_params, params, index)
+      # new ingredient
+    elsif params[:product][index][:id].present? && (product = Product.find_by(id: params[:product][index][:id])) &&
+          (params[:product][index].to_a - product.attributes.to_a).empty? # full prod match
+      new_ingredient_with_product(ingredient_params, product)
+    else
+      new_ingredient(ingredient_params, params, index)
+    end
+  end
+
+  def new_ingredient_with_product(ingredient_params, product)
+    ingredient = Ingredient.new
+    ingredient.weight = ingredient_params[:weight]
+    ingredient.product = product
+    ingredient
+  end
+
+  def new_ingredient(ingredient_params, params, index)
+    product = Product.new(params[:product][index].reject { |k| k == 'id' })
+    ingredient = Ingredient.new(ingredient_params.reject { |k| k == 'id' })
+    ingredient.product = product
+    ingredient
+  end
+
+  # TODO: else raise some exception
+  def update_ingredient(ingredient_params, params, index)
+    ingredient = @recipe.ingredients.find_by(id: ingredient_params[:id])
+    return unless ingredient # edit existent ingredient
+    ingredient.weight = ingredient_params[:weight]
+    if (params[:product][index].to_a - ingredient.product.attributes.to_a).any?
+      # new product instead of change of the old one
+      ingredient.product = Product.new(params[:product][index].reject { |k| k == 'id' })
     end
     ingredient
+  end
+
+  def format_params!(params)
+    params[:ingredient].each_with_index do |ingredient, i|
+      ingredient_to_update = params[:ingredient][i]
+      ingredient_to_update[:weight] = ingredient[:weight].to_f
+      ingredient_to_update[:id] = ingredient[:id].to_i if ingredient_to_update[:id].present?
+    end
+    params[:product].each_with_index do |product, i|
+      product_to_update = params[:product][i]
+      product_to_update[:caloricity] = product[:caloricity].to_f
+      product_to_update[:id] = product[:id].to_i if product_to_update[:id].present?
+    end
   end
 
   def set_recipe
