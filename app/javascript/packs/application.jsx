@@ -11,6 +11,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Confirm from './confirm/confirm'
 import './products/products_search_dialog'
+import './recipe'
 
 const confirm = function (message, options) {
     let cleanup, component, props, wrapper;
