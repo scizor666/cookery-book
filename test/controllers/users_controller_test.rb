@@ -20,8 +20,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count') do
       post users_url, params: { user: { name: @user.name,
                                         email: "#{@user.email}a",
-                                        password: 'qwerty123',
-                                        password_confirmation: 'qwerty123' } }
+                                        password: 'Password1',
+                                        password_confirmation: 'Password1' } }
     end
 
     assert_redirected_to catalog_url(Catalog.last)
@@ -40,8 +40,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test 'should update user' do
     patch user_url(@user), params: { user: { name: "#{@user.name}qwerty",
                                              email: "#{@user.email}b",
-                                             password: 'qwerty123',
-                                             password_confirmation: 'qwerty123' } }
+                                             password: 'Password1',
+                                             password_confirmation: 'Password1' } }
     assert_redirected_to user_url(@user)
   end
 
@@ -51,5 +51,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to users_url
+  end
+
+  %w[Short1 noDigit no1uppercase NO1LOWERCASE].each do |password|
+    test "should not create with password #{password}" do
+      assert_no_difference('User.count') do
+        post users_url, params: { user: { name: @user.name,
+                                          email: "#{@user.email}c",
+                                          password: password,
+                                          password_confirmation: password } }
+      end
+    end
   end
 end

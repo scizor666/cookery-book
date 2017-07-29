@@ -9,6 +9,12 @@ class User < ApplicationRecord
                     uniqueness: true,
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/ }
 
+  validates :password, presence: true,
+                       length: { in: 8..40 },
+                       format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,40}\z/,
+                                 message: 'must include at least one lowercase letter, ' \
+                                          'one uppercase letter, and one digit.' }
+
   before_validation :downcase_email
 
   class << self
