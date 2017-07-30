@@ -12,7 +12,21 @@ adjustFirstIngredientRemoveAbility = function () {
     }
 };
 
-addNewIngredient = function(ingredient = null) {
+newIngredientHighlight = function (ingredient) {
+    const timestampClass = 'ingredient-added-at-' + new Date().getTime();
+    const highlightClass = 'add-ingredient-highlight';
+    const ingredientClasses = timestampClass + ' ' + highlightClass;
+    ingredient.className += ingredient.className ? ' ' + ingredientClasses : ingredientClasses;
+    setTimeout(function () {
+        let elements = document.getElementsByClassName(timestampClass);
+        [].forEach.call(elements, function(el) {
+            el.classList.remove(highlightClass);
+            el.classList.remove(timestampClass);
+        });
+    }, 3000);
+};
+
+addNewIngredient = function (ingredient = null) {
     let clone = document.getElementById('new_ingredient').firstElementChild.cloneNode(true);
     if (ingredient) {
         clone.querySelector('.product-id').value = ingredient.product.id;
@@ -21,6 +35,7 @@ addNewIngredient = function(ingredient = null) {
         clone.querySelector('.ingredient-weight').value = ingredient.weight;
     }
     document.getElementById('ingredients').appendChild(clone);
+    newIngredientHighlight(clone);
     adjustFirstIngredientRemoveAbility();
 };
 
