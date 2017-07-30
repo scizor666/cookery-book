@@ -49,6 +49,7 @@ export default class ProductForm extends React.Component {
                            step="any"
                            min="0"
                            placeholder="Weight, g"
+                           autoComplete="off"
                            className="form-control"/>
                 </div>
             </div>

@@ -19,7 +19,7 @@ newIngredientHighlight = function (ingredient) {
     ingredient.className += ingredient.className ? ' ' + ingredientClasses : ingredientClasses;
     setTimeout(function () {
         let elements = document.getElementsByClassName(timestampClass);
-        [].forEach.call(elements, function(el) {
+        [].forEach.call(elements, function (el) {
             el.classList.remove(highlightClass);
             el.classList.remove(timestampClass);
         });
@@ -28,13 +28,22 @@ newIngredientHighlight = function (ingredient) {
 
 addNewIngredient = function (ingredient = null) {
     let clone = document.getElementById('new_ingredient').firstElementChild.cloneNode(true);
+    let beforeElement = null;
     if (ingredient) {
         clone.querySelector('.product-id').value = ingredient.product.id;
         clone.querySelector('.product-name').value = ingredient.product.name;
         clone.querySelector('.product-caloricity').value = ingredient.product.caloricity;
         clone.querySelector('.ingredient-weight').value = ingredient.weight;
+        beforeElement = [].find.call(document.getElementById('ingredients').children, function (ingredient) {
+            return !ingredient.querySelector('.product-name').value &&
+                !ingredient.querySelector('.product-caloricity').value &&
+                !ingredient.querySelector('.ingredient-weight').value
+        });
     }
-    document.getElementById('ingredients').appendChild(clone);
+    document.getElementById('ingredients').insertBefore(clone, beforeElement);
+    if (beforeElement) {
+        document.getElementById('ingredients').removeChild(beforeElement);
+    }
     newIngredientHighlight(clone);
     adjustFirstIngredientRemoveAbility();
 };

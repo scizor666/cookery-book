@@ -6,7 +6,7 @@
       = render partial: 'recipe/product', locals: { product: ingredient.product, recipe_form: recipe_form }
       .form-group.col-md-4.col-sm-12
         = ingredient_form.label :weight, 'Weight, g'
-        = ingredient_form.text_field :weight, class: 'form-control ingredient-weight', required: true, placeholder: 'weight', type: :number, step: :any, min: 0
+        = ingredient_form.text_field :weight, class: 'form-control ingredient-weight', required: true, autocomplete: 'off', placeholder: 'weight', type: :number, step: :any, min: 0
         = ingredient_form.hidden_field :id, value: ingredient.id
     .row
       .col
