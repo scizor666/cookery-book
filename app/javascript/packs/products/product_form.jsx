@@ -40,7 +40,7 @@ export default class ProductForm extends React.Component {
                 </div>
             })}
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-4">
                     <input value={this.state.weight}
                            onChange={(e) => this.handleInputChange(e)}
                            name="weight"

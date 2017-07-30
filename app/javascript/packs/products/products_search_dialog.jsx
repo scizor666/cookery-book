@@ -24,6 +24,11 @@ export default class ProductsSearch extends React.Component {
             // TODO: handle error
         });
         this.setState({showModal: true});
+        this.style  = {
+            content: {
+                maxWidth: '40rem',
+            }
+        };
     }
 
     handleCancelModal() {
