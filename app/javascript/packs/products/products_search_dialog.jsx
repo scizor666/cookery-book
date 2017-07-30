@@ -56,7 +56,7 @@ export default class ProductsSearch extends React.Component {
                         <input value={this.state.searchPhrase} className="form-control"
                                onChange={(e) => this.setSearchPhrase(e)}/>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={() => this.handleOpenModal()}>Search ingredients
+                    <button id="search_ingredients" type="button" className="btn btn-primary" onClick={() => this.handleOpenModal()}>Search ingredients
                     </button>
                 </div>
                 <Modal
@@ -93,5 +93,10 @@ document.addEventListener('turbolinks:load', () => {
     if (searchContainer) {
         const props = {};
         ReactDOM.render(<ProductsSearch {...props}/>, searchContainer);
+        searchContainer.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+                document.getElementById('search_ingredients').click();
+            }
+        });
     }
 });
