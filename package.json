@@ -41,6 +41,8 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-plugin-react": "^7.1.0",
     "webpack-dev-server": "^2.5.0"
   }
 }

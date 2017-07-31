@@ -7,7 +7,7 @@ export default class Confirm extends React.Component {
 
     constructor(props) {
         super(props);
-        this.displayName = 'Confirm'
+        this.displayName = 'Confirm';
     }
 
     abort() {
@@ -66,7 +66,7 @@ export default class Confirm extends React.Component {
             </Modal>
         );
     }
-};
+}
 
 Modal.getDefaultProps = {
     confirmLabel: 'OK',

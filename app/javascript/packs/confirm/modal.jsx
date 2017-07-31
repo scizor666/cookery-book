@@ -4,7 +4,7 @@ export default class Modal extends React.Component {
 
     constructor(props) {
         super(props);
-        this.displayName = 'Modal'
+        this.displayName = 'Modal';
     }
 
     backdrop() {
@@ -39,4 +39,4 @@ export default class Modal extends React.Component {
             </div>
         );
     }
-};
+}
