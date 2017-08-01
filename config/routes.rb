@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 's3/sign'
+
   get 'products/index'
 
   get    '/login',   to: 'sessions#new'
