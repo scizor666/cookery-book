@@ -4,7 +4,17 @@ Ruby version: 2.4.1
 
 yarn must be installed, for example through brew ( `brew install yarn` )
 
+the following env variables must be set since the application actively uses s3 as a storage:
+
+```
+S3_BUCKET_NAME
+AWS_REGION
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+```
+
 for local run:
+
 ```
 $ gem install bundler
 $ bundle
