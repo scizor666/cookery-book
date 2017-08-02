@@ -18,7 +18,7 @@
         .col
           #search_container.mb-2
         .col
-          #recipe_image_uploader
+          #recipe_image_uploader{data: {name: 'recipe[image_url]', value: @recipe.image_url}}
       #ingredients
         - @recipe.ingredients.each_with_index do |ingredient, i|
           - style = i == 0 && @recipe.ingredients.size == 1 ? 'display:none;' : 'display:block;'

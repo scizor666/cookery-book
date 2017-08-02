@@ -7,8 +7,9 @@ class Uploader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
-            fileChosenText: 'Picture not chosen'
+            value: props.value,
+            fileChosenText: 'File not chosen',
+            fileName: ''
         };
     }
 
@@ -16,7 +17,7 @@ class Uploader extends React.Component {
         const imageUrl = e['signedUrl'].split('?')[0];
         this.setState({
             ['value']: imageUrl,
-            ['fileChosenText']: 'Picture uploaded'
+            ['fileChosenText']: this.state.fileName + ' uploaded'
         });
     }
 
@@ -46,6 +47,9 @@ class Uploader extends React.Component {
             };
             image.src = readerEvent.target.result;
         };
+        this.setState({
+            ['fileName']: file.name
+        });
         reader.readAsDataURL(file);
     }
 
@@ -101,6 +105,10 @@ class Uploader extends React.Component {
 document.addEventListener('turbolinks:load', function () {
     const recipe_image_uploader = document.getElementById('recipe_image_uploader');
     if (recipe_image_uploader) {
-        ReactDOM.render(<Uploader name="recipe[image_url]"/>, recipe_image_uploader);
+        let props = {
+            name: recipe_image_uploader.getAttribute('data-name'),
+            value: recipe_image_uploader.getAttribute('data-value'),
+        };
+        ReactDOM.render(<Uploader {...props}/>, recipe_image_uploader);
     }
 });
