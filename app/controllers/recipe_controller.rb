@@ -57,12 +57,13 @@ class RecipeController < ApplicationController
   end
 
   def recipe_params
-    recipe_params = params.require(:recipe).permit(:name, :id, :description, :short_description,
+    recipe_params = params.require(:recipe).permit(:name, :id, :description, :short_description, :image_url,
                                                    { ingredient: %i[id weight] },
                                                    product: %i[id name caloricity])
     ingredients = combine_ingredients recipe_params.to_h
     { short_description: recipe_params[:short_description], description: recipe_params[:description],
-      name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients) }
+      name: recipe_params[:name], ingredients: ingredients, caloricity: caloricity(ingredients),
+      image_url: recipe_params[:image_url] }
   end
 
   private

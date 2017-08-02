@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Modal from 'react-modal'
-import ProductForm from './product_form'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import ProductForm from './product_form';
 
 export default class ProductsSearch extends React.Component {
 
@@ -38,12 +38,13 @@ export default class ProductsSearch extends React.Component {
     handleSelectIngredient(ingredient) {
         // @TODO: handle errors
         ingredient['product'] = this.state.found.find((p) => p.id === ingredient.productId);
+        /*global addNewIngredient*/
         addNewIngredient(ingredient);
         this.handleCancelModal();
     }
 
     setSearchPhrase(e) {
-        this.setState({searchPhrase: e.target.value})
+        this.setState({searchPhrase: e.target.value});
     }
 
 
@@ -54,7 +55,7 @@ export default class ProductsSearch extends React.Component {
                     <div className="inner-addon left-addon">
                         <i className="fa fa-search form-control-feedback"/>
                         <input value={this.state.searchPhrase} className="form-control"
-                               onChange={(e) => this.setSearchPhrase(e)}/>
+                            onChange={(e) => this.setSearchPhrase(e)}/>
                     </div>
                     <button id="search_ingredients" type="button" className="btn btn-primary" onClick={() => this.handleOpenModal()}>Search ingredients
                     </button>
@@ -69,16 +70,16 @@ export default class ProductsSearch extends React.Component {
                             return <div className="fluid-container">
                                 <h1>Select Ingredient</h1>
                                 <ProductForm onFormSubmit={(ingredient) => this.handleSelectIngredient(ingredient)}
-                                             onFormCancel={() => this.handleCancelModal()}
-                                             products={this.state.found}/>
-                            </div>
+                                    onFormCancel={() => this.handleCancelModal()}
+                                    products={this.state.found}/>
+                            </div>;
                         } else {
                             return <div>
                                 <p>No products found</p>
                                 <button className="btn btn-primary mt-2" onClick={() => this.handleCancelModal()}>
                                     Cancel
                                 </button>
-                            </div>
+                            </div>;
                         }
                     })()}
 
@@ -86,14 +87,14 @@ export default class ProductsSearch extends React.Component {
             </div>
         );
     }
-};
+}
 
 document.addEventListener('turbolinks:load', () => {
     const searchContainer = document.getElementById('search_container');
     if (searchContainer) {
         const props = {};
         ReactDOM.render(<ProductsSearch {...props}/>, searchContainer);
-        searchContainer.addEventListener("keydown", function (e) {
+        searchContainer.addEventListener('keydown', function (e) {
             if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
                 document.getElementById('search_ingredients').click();
             }

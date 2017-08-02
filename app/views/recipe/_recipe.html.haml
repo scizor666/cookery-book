@@ -1,11 +1,10 @@
-%h1
-  = link_to recipe.name, recipe
-%a{href: "#recipe_details_#{recipe.id}",  'data-toggle': 'collapse'} Details
+%h1= recipe.name
 
 %div.collapse{id: "recipe_details_#{recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
   .row
     .col-sm-12.col-md-6
       .lead= recipe.short_description
+      %img.w-100{src: recipe.image_url, alt: 'No picture found'}
     .col-sm-12.col-md-6
       %h2 Ingredients
       %table.table.table-striped.lead.ingredients-table

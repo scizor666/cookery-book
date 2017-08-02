@@ -1,8 +1,6 @@
-%h1 My Recipes
-= link_to 'Add a new Recipe', new_recipe_path
-- @catalog.recipes.each do |recipe|
-  = render partial: 'recipe/recipe', locals: { recipe: recipe }
--#= link_to 'Edit', edit_catalog_path(@catalog)
--#|
-%br
--#= link_to 'Back', catalogs_path
+.row
+  .col-md-3.col-md-offset-3.container
+    .text-center
+      %h1 My Recipes
+      = link_to 'Add a new Recipe', new_recipe_path
+#cards_container.container{data: raw(@catalog.recipes.to_json)}

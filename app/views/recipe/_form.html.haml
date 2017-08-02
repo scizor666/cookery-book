@@ -14,7 +14,11 @@
           = f.label :short_description
           = f.text_area :short_description, class: 'form-control', rows: 3, maxlength: 150, placeholder: 'short description'
 
-      #search_container.mb-2
+      .row
+        .col
+          #search_container.mb-2
+        .col
+          #recipe_image_uploader
       #ingredients
         - @recipe.ingredients.each_with_index do |ingredient, i|
           - style = i == 0 && @recipe.ingredients.size == 1 ? 'display:none;' : 'display:block;'

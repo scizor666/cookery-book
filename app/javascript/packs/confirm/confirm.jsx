@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from './modal'
+import Modal from './modal';
 
 export default class Confirm extends React.Component {
 
 
     constructor(props) {
         super(props);
-        this.displayName = 'Confirm'
+        this.displayName = 'Confirm';
     }
 
     abort() {
@@ -66,9 +66,52 @@ export default class Confirm extends React.Component {
             </Modal>
         );
     }
-};
+}
 
 Modal.getDefaultProps = {
     confirmLabel: 'OK',
     abortLabel: 'Cancel'
 };
+
+const confirm = function (message, options) {
+    let cleanup, component, props, wrapper;
+    if (options === null) {
+        options = {};
+    }
+    props = $.extend({
+        message: message
+    }, options);
+    wrapper = document.body.appendChild(document.createElement('div'));
+    component = ReactDOM.render(<Confirm {...props}/>, wrapper);
+    cleanup = function () {
+        ReactDOM.unmountComponentAtNode(wrapper);
+        return setTimeout(function () {
+            return wrapper.remove();
+        });
+    };
+    return component.promise.always(cleanup).promise();
+};
+
+export const confirmRecipeDelete = function (recipeId) {
+    return confirm('Are you sure?', {
+        description: 'Would you like to remove this recipe?',
+        confirmLabel: 'Yes',
+        abortLabel: 'No'
+    }).then(() => {
+        $.ajax({
+            url: '/recipe/' + recipeId,
+            beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
+            type: 'DELETE'
+            // TODO handle error
+        });
+        return this;
+    });
+};
+document.addEventListener('turbolinks:load', () => {
+    const data = $('body').data();
+    if (data.controller === 'recipe' && data.action === 'show') {
+        document.getElementById('delete_recipe').addEventListener('click', function () {
+            confirmRecipeDelete($('#recipe_data').data('recipe').id);
+        }, false);
+    }
+});

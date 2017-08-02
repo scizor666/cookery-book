@@ -37,7 +37,7 @@ addNewIngredient = function (ingredient = null) {
         beforeElement = [].find.call(document.getElementById('ingredients').children, function (ingredient) {
             return !ingredient.querySelector('.product-name').value &&
                 !ingredient.querySelector('.product-caloricity').value &&
-                !ingredient.querySelector('.ingredient-weight').value
+                !ingredient.querySelector('.ingredient-weight').value;
         });
     }
     document.getElementById('ingredients').insertBefore(clone, beforeElement);
