@@ -25,17 +25,18 @@ export default class RecipeCard extends React.Component {
     render() {
         return (<Card className="h-100">
             <CardImg top width="100%"
-                src={this.state.recipe.image_url || this.props.placeholderUrl}
-                alt="Card image cap"
-                onClick={() => location.href = this.recipeLink()}/>
+                     src={this.state.recipe.image_url || this.props.placeholderUrl}
+                     alt="Card image cap"
+                     onClick={() => location.href = this.recipeLink()}/>
             <CardBlock>
                 <CardTitle>{this.state.recipe.name}</CardTitle>
                 <CardText>{this.state.recipe.short_description}</CardText>
             </CardBlock>
             <CardFooter className="text-center">
-                <a className="mr-5" href={this.recipeLink()}><i className="fa fa-eye"/></a>
-                <a className="mr-5" href={this.recipeLink() + '/edit'}><i className="fa fa-pencil"/></a>
-                <a href="javascript:void(0);" onClick={() => this.handleDelete()}><i className="fa fa-trash-o"/></a>
+                <a title="Recipe" className="mr-5" href={this.recipeLink()}><i className="fa fa-eye"/></a>
+                <a title="Edit" className="mr-5" href={this.recipeLink() + '/edit'}><i className="fa fa-pencil"/></a>
+                <a title="Delete" href="javascript:void(0);" onClick={() => this.handleDelete()}><i
+                    className="fa fa-trash-o"/></a>
             </CardFooter>
         </Card>);
     }
