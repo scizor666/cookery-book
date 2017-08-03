@@ -25,7 +25,7 @@ export default class RecipeCard extends React.Component {
     render() {
         return (<Card className="h-100">
             <CardImg top width="100%"
-                src={this.state.recipe.image_url}
+                src={this.state.recipe.image_url || this.props.placeholderUrl}
                 alt="Card image cap"
                 onClick={() => location.href = this.recipeLink()}/>
             <CardBlock>
