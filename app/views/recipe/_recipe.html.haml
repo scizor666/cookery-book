@@ -1,4 +1,14 @@
-%h1= recipe.name
+.row
+  .col.col-auto
+    %h1= recipe.name
+  .col
+    %div.recipe-actions
+      = link_to @recipe.catalog, class: 'mr-3', title: 'Back' do
+        %i.fa.fa-long-arrow-left
+      = link_to edit_recipe_path(@recipe), class: 'mr-3', title: 'Edit' do
+        %i.fa.fa-pencil
+      = link_to 'javascript:function()', id: 'delete_recipe', title: 'Delete' do
+        %i.fa.fa-trash-o
 
 %div.collapse{id: "recipe_details_#{recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
   .row
