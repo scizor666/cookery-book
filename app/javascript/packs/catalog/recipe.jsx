@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Card, CardImg, CardText, CardBlock,
-    CardTitle, Button, CardFooter
+    CardTitle, CardFooter
 } from 'reactstrap';
 import {confirmRecipeDelete} from '../confirm/confirm';
 
@@ -33,13 +33,9 @@ export default class RecipeCard extends React.Component {
                 <CardText>{this.state.recipe.short_description}</CardText>
             </CardBlock>
             <CardFooter className="text-center">
-                <Button color="primary"
-                    onClick={() => location.href = this.recipeLink()}>Recipe</Button>
-                {' '}
-                <Button color="primary"
-                    onClick={() => location.href = this.recipeLink() + '/edit'}>Edit</Button>
-                {' '}
-                <Button color="primary" onClick={() => this.handleDelete()}>Delete</Button>
+                <a className="mr-5" href={this.recipeLink()}><i className="fa fa-eye"/></a>
+                <a className="mr-5" href={this.recipeLink() + '/edit'}><i className="fa fa-pencil"/></a>
+                <a href="javascript:void(0);" onClick={() => this.handleDelete()}><i className="fa fa-trash-o"/></a>
             </CardFooter>
         </Card>);
     }
