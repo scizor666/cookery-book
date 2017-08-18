@@ -92,14 +92,14 @@ const confirm = function (message, options) {
     return component.promise.always(cleanup).promise();
 };
 
-export const confirmRecipeDelete = function (recipeId) {
+export const confirmRecipeDelete = function (recipe) {
     return confirm('Are you sure?', {
         description: 'Would you like to remove this recipe?',
         confirmLabel: 'Yes',
         abortLabel: 'No'
     }).then(() => {
         $.ajax({
-            url: '/recipe/' + recipeId,
+            url: '/catalogs/' + recipe.catalog_id + '/recipe/' + recipe.id,
             beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
             type: 'DELETE'
             // TODO handle error
@@ -111,7 +111,7 @@ document.addEventListener('turbolinks:load', () => {
     const data = $('body').data();
     if (data.controller === 'recipe' && data.action === 'show') {
         document.getElementById('delete_recipe').addEventListener('click', function () {
-            confirmRecipeDelete($('#recipe_data').data('recipe').id);
+            confirmRecipeDelete($('#recipe_data').data('recipe'));
         }, false);
     }
 });

@@ -7,12 +7,12 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
-    get recipe_url(id: @recipe.id)
+    get catalog_recipe_url(@recipe.catalog, @recipe)
     assert_response :success
   end
 
   test 'should get new' do
-    get new_recipe_url
+    get new_catalog_recipe_url(@recipe.catalog)
     assert_response :success
   end
 end

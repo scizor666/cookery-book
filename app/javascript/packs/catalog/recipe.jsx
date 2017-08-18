@@ -7,30 +7,23 @@ import {confirmRecipeDelete} from '../confirm/confirm';
 
 export default class RecipeCard extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipe: props.recipe
-        };
-    }
-
     recipeLink() {
-        return '/recipe/' + this.state.recipe.id;
+        return '/catalogs/' + this.props.recipe.catalog_id + '/recipe/' + this.props.recipe.id;
     }
 
     handleDelete() {
-        confirmRecipeDelete(this.state.recipe.id);
+        confirmRecipeDelete(this.props.recipe);
     }
 
     render() {
         return (<Card className="h-100">
             <CardImg top width="100%"
-                     src={this.state.recipe.image_url || this.props.placeholderUrl}
-                     alt="Card image cap"
-                     onClick={() => location.href = this.recipeLink()}/>
+                src={this.props.recipe.image_url || this.props.placeholderUrl}
+                alt="Card image cap"
+                onClick={() => location.href = this.recipeLink()}/>
             <CardBlock>
-                <CardTitle>{this.state.recipe.name}</CardTitle>
-                <CardText>{this.state.recipe.short_description}</CardText>
+                <CardTitle>{this.props.recipe.name}</CardTitle>
+                <CardText>{this.props.recipe.short_description}</CardText>
             </CardBlock>
             <CardFooter className="text-center">
                 <a title="Recipe" className="mr-5" href={this.recipeLink()}><i className="fa fa-eye"/></a>
