@@ -1,32 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import RecipeCard from './recipe';
 
-class RecipeList extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipes: props.recipes
-        };
-    }
+export default class RecipeList extends React.Component {
 
     render() {
         return (<div className="row">
-            {this.state.recipes.map(function (recipe) {
+            {this.props.recipes.map(function (recipe) {
                 return <div key={recipe.id} className="col-md-4 mt-2">
                     <RecipeCard placeholderUrl="/placeholder-320x240.png" recipe={recipe}/>
                 </div>;
             })}
         </div>);
-
-
     }
 }
-
-document.addEventListener('turbolinks:load', function () {
-    const cardsContainer = document.getElementById('cards_container');
-    if (cardsContainer) {
-        ReactDOM.render(<RecipeList recipes={JSON.parse(cardsContainer.getAttribute('data'))}/>, cardsContainer);
-    }
-});

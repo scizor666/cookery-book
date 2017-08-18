@@ -8,7 +8,7 @@ import {confirmRecipeDelete} from '../confirm/confirm';
 export default class RecipeCard extends React.Component {
 
     recipeLink() {
-        return '/catalogs/' + this.props.recipe.catalog_id + '/recipe/' + this.props.recipe.id;
+        return `${location.href}/recipe/${this.props.recipe.id}`;
     }
 
     handleDelete() {

@@ -1,6 +1,6 @@
 .row
   .col.col-auto
-    %h1= recipe.name
+    %h1= @recipe.name
   .col
     %div.recipe-actions
       = link_to @recipe.catalog, class: 'mr-3', title: 'Back' do
@@ -10,11 +10,11 @@
       = link_to 'javascript:function()', id: 'delete_recipe', title: 'Delete' do
         %i.fa.fa-trash-o
 
-%div.collapse{id: "recipe_details_#{recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
+%div.collapse{id: "recipe_details_#{@recipe.id}", class: params[:controller] == 'recipe' ? 'show' : '' }
   .row
     .col-sm-12.col-md-6
-      .lead= recipe.short_description
-      %img.w-100{src: recipe.image_url.present? ? recipe.image_url : '/placeholder-400x300.png', alt: 'No picture found'}
+      .lead= @recipe.short_description
+      %img.w-100{src: @recipe.image_url.present? ? @recipe.image_url : '/placeholder-400x300.png', alt: 'No picture found'}
     .col-sm-12.col-md-6
       %h2 Ingredients
       %table.table.table-striped.lead.ingredients-table
@@ -24,7 +24,7 @@
             %th.col Weight,g
             %th.col kcal/100g
         %tbody
-          - recipe.ingredients.each do |i|
+          - @recipe.ingredients.each do |i|
             %tr
               %td.ingredient-word-breaks= i.product.name
               %td= i.weight
@@ -32,9 +32,9 @@
           %tr
             %td
               %h4 Total
-            %td= recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
+            %td= @recipe.ingredients.inject(0) { |sum, i| sum + i.weight }
             %td
-              %h4= recipe.caloricity
+              %h4= @recipe.caloricity
   .row
     .col
-      %p.recipe-description.lead= recipe.description
+      %p.recipe-description.lead= @recipe.description

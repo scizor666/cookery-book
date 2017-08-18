@@ -1,19 +1,22 @@
 class RecipeController < ApplicationController
+  before_action :set_catalog, except: %i[new create]
   before_action :set_recipe, only: %i[show edit update destroy]
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, except: %i[new create]
   before_action :correct_user, except: %i[new create]
+
+  def index
+    page = params[:page].to_i
+    @recipes = Recipe.where(catalog_id: params[:catalog_id])
+                     .order(created_at: :desc).offset(9 * page).limit(9)
+  end
 
   def new
     @recipe = Recipe.new
-    ingredient = Ingredient.new
-    ingredient.product = Product.new
-    @recipe.ingredients << ingredient
+    @recipe.ingredients << Ingredient.new.tap { |i| i.product = Product.new }
     @recipe
   end
 
-  def show
-    @recipe = Recipe.find_by(id: params[:id])
-  end
+  def show; end
 
   def create
     @recipe = Recipe.new(recipe_params)
@@ -128,12 +131,20 @@ class RecipeController < ApplicationController
     end
   end
 
+  def set_catalog
+    @catalog = Catalog.find_by(id: params[:catalog_id])
+  end
+
   def set_recipe
     @recipe = Recipe.find_by(id: params[:id])
   end
 
   def set_user
-    @user = @recipe && @recipe.catalog.user
+    @user = if params[:catalog_id] && params[:id]
+              @recipe && @recipe.catalog == @catalog && @recipe.catalog.user
+            else
+              @catalog && @catalog.user
+            end
   end
 
   def caloricity(ingredients)
