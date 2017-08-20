@@ -19,9 +19,32 @@ p.recipe-description {
   background-color: #edffe6;
   border: 1px solid #edffe6;
 }
+
 .recipe-actions {
   @media screen and (min-width: 720px) {
-      position: absolute;
-      bottom: 25%;
+    position: absolute;
+    bottom: 25%;
+  }
+}
+
+#autocomplete-items-container {
+  position: relative;
+}
+
+#autocomplete-items {
+  z-index: 100;
+  position: absolute;
+  list-style: none;
+  padding: 6px 8px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  display: block;
+  li.autocomplete-item {
+    padding: 4px 10px;
+    &:hover {
+      background-color: #e2e3e2;
+    }
   }
 }

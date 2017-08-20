@@ -16,24 +16,11 @@
 
       .row
         .col
-          #search_container.mb-2
-        .col
           #recipe_image_uploader{data: {name: 'recipe[image_url]', value: @recipe.image_url}}
-      #ingredients
-        - @recipe.ingredients.each_with_index do |ingredient, i|
-          - style = i == 0 && @recipe.ingredients.size == 1 ? 'display:none;' : 'display:block;'
-          = render partial: 'recipe/ingredient', locals: { ingredient: ingredient, recipe_form: f, style: style }
-      .row.mt-4
-        .col
-          = link_to 'javascript:function()', id: 'add_new_ingredient' do
-            %i.fa.fa-plus.fa-2x.text-success.pull-right.top-aligned-row
+      #ingredients{data: {ingredients: raw(@recipe.ingredients.to_json), products: raw(@recipe.ingredients.map(&:product).to_json)}}
       .row.mb-2
         .col
           = f.label :description
           = f.text_area :description, class: 'form-control', rows: 5, placeholder: 'description'
       .form-group.col-md-12.text-center
         = f.submit class: 'btn btn-lg btn-primary'
--#TODO really controversial solution, should be fully refactored
-= form_for @recipe, url: 'dummy-url', html: {style: 'display:none;', class: 'dummy-form'} do |f|
-  #new_ingredient
-    = render partial: 'recipe/ingredient', locals: {ingredient: dummy_ingredient, recipe_form: f, style: nil}
