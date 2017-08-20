@@ -8,7 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import './confirm/confirm'
-import './products/products_search_dialog'
-import './recipe'
+import './recipe/ingredient_list'
 import './catalog/catalog'
 import './images/uploader'

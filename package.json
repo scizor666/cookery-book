@@ -32,7 +32,6 @@
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-infinite-scroller": "^1.0.15",
-    "react-modal": "^2.2.2",
     "react-s3-uploader": "^4.2.0",
     "reactstrap": "^4.8.0",
     "resolve-url-loader": "^2.1.0",

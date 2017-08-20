@@ -11,12 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap
- *= require recipe
  *= require_tree .
  *= require_self
  */
 
 .header-dropdown {
-  border:0px;
-  outline:0px;
+  border:0;
+  outline:0;
 }
