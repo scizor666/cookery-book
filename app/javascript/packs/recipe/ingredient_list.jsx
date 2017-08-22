@@ -73,31 +73,26 @@ class IngredientList extends React.Component {
     }
 
     renderIngredients() {
-        // @TODO GROUNDED MEAT!!
-        let onUserInput = (key, propName, value) => this.handleUserInput(key, propName, value);
-        let removeIngredient = (key) => this.removeIngredient(key);
-        let handleSelect = (key, option) => this.handleSelect(key, option);
-        let handleDropdownVisibility = (key, state) => {
-            this.handleUserInput(key, 'showDropdown', state || !!this.state.ingredients[key]['preventHideDropdown']);
-        };
-        let setPreventHideDropdown = (key, state) => this.handleUserInput(key, 'preventHideDropdown', state);
-        let elementRemovable = this.state.elementRemovable;
-        return this.state.ingredients.map(function (ingredient, key) {
+        return this.state.ingredients.map((ingredient, key) => {
+            // @TODO simplify this mapping, maybe no reason to use a key
             let props = {
                 name: ingredient.name,
                 caloricity: ingredient.caloricity,
                 weight: ingredient.weight,
                 ingredientId: ingredient.ingredientId,
                 productId: ingredient.productId,
-                onUserInput: onUserInput,
-                removeIngredient: removeIngredient,
+                onUserInput: (key, propName, value) => this.handleUserInput(key, propName, value),
+                removeIngredient: key => this.removeIngredient(key),
                 keyId: key,
-                elementRemovable: elementRemovable,
+                elementRemovable: this.state.elementRemovable,
                 className: ingredient.className,
                 searchResults: ingredient.searchResults,
-                handleSelect: handleSelect,
-                handleDropdownVisibility: handleDropdownVisibility,
-                setPreventHideDropdown: setPreventHideDropdown,
+                handleSelect: (key, option) => this.handleSelect(key, option),
+                handleDropdownVisibility: (key, state) => {
+                    this.handleUserInput(key, 'showDropdown',
+                        state || !!this.state.ingredients[key]['preventHideDropdown']);
+                },
+                setPreventHideDropdown: (key, state) => this.handleUserInput(key, 'preventHideDropdown', state),
                 showDropdown: ingredient.showDropdown
             };
             return <Ingredient key={key} {...props}/>;
