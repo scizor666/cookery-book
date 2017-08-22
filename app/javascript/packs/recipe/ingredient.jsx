@@ -15,8 +15,13 @@ export default class Ingredient extends React.Component {
         if(this.props.searchResults && this.props.showDropdown) {
             return <SearchResultsList results={this.props.searchResults}
                 setPreventHideDropdown={(state) => this.props.setPreventHideDropdown(this.props.keyId, state)}
-                handleSelect={(option) => this.props.handleSelect(this.props.keyId, option)}/>;
+                handleSelect={option => this.handleSelect(option)}/>;
         }
+    }
+
+    handleSelect(option) {
+        this.props.handleSelect(this.props.keyId, option);
+        this.weightInput.focus();
     }
 
     render() {
@@ -52,7 +57,8 @@ export default class Ingredient extends React.Component {
                         placeholder="weight" type="number" step="any" min="0" value={this.props.weight}
                         name="recipe[ingredient][][weight]"
                         onChange={(e) => this.handleInputChange(e)} data-name="weight"
-                        id="recipe_ingredient__weight"/>
+                        id="recipe_ingredient__weight"
+                        ref={e => this.weightInput = e}/>
                     <input defaultValue={this.props.ingredientId} type="hidden" name="recipe[ingredient][][id]"
                         id="recipe_ingredient__id"/>
                 </div>
