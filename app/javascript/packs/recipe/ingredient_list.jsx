@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Ingredient from './ingredient';
+import {debounce} from 'throttle-debounce';
 
 class IngredientList extends React.Component {
 
@@ -10,6 +11,7 @@ class IngredientList extends React.Component {
             ingredients: props.ingredients,
         };
         this.state['elementRemovable'] = this.isElementRemovable();
+        this.autoComplete = debounce(250, this.autoComplete);
     }
 
     handleUserInput(key, propName, value) {
