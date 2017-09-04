@@ -3,6 +3,7 @@
 const merge = require('webpack-merge')
 const sharedConfig = require('./shared.js')
 const { settings, output } = require('./configuration.js')
+const enzymeConfig = require('./enzyme_exports.js')
 
 module.exports = merge(sharedConfig, {
   devtool: 'cheap-eval-source-map',
@@ -29,4 +30,4 @@ module.exports = merge(sharedConfig, {
       ignored: /node_modules/
     }
   }
-})
+}, enzymeConfig)

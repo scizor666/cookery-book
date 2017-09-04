@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Ingredient from './ingredient';
 import {debounce} from 'throttle-debounce';
 
-class IngredientList extends React.Component {
+export default class IngredientList extends React.Component {
 
     constructor(props) {
         super(props);

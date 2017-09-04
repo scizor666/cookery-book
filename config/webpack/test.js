@@ -2,5 +2,6 @@
 
 const merge = require('webpack-merge')
 const sharedConfig = require('./shared.js')
+const enzymeConfig = require('./enzyme_exports.js')
 
-module.exports = merge(sharedConfig, {})
+module.exports = merge(sharedConfig, enzymeConfig)
