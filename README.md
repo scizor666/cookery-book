@@ -1,4 +1,4 @@
-# Cookery Book [![Build Status](https://travis-ci.org/scizor666/cookery-book.svg?branch=master)](https://travis-ci.org/scizor666/cookery-book)
+# Cookery Book [![Build Status](https://travis-ci.org/scizor666/cookery-book.svg?branch=master)](https://travis-ci.org/scizor666/cookery-book) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 Ruby version: 2.4.1
 

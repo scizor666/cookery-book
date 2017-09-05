@@ -13,5 +13,7 @@ branches:
 script:
   - RAILS_ENV=test bundle exec rubocop -c .rubocop.yml
   - RAILS_ENV=test bundle exec rake
+  - ./node_modules/.bin/eslint app/javascript/packs/*/*
+  - yarn test
 before_script:
   - yarn install
