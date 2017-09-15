@@ -7,17 +7,21 @@ import {shallow} from 'enzyme';
 const ingredients = [
     {
         weight: 300,
-        ingredientId: 1,
-        name: 'chicken',
-        productId: 2,
-        caloricity: 107.7
+        id: 1,
+        product: {
+            id: 2,
+            name: 'chicken',
+            caloricity: 107.7
+        }
     },
     {
         weight: 155,
-        ingredientId: 2,
-        name: 'carrot',
-        productId: 1,
-        caloricity: 44
+        id: 2,
+        product: {
+            id: 1,
+            name: 'carrot',
+            caloricity: 44
+        },
     }];
 
 test('ingredient list displayed', () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Ingredient from './ingredient';
 import {debounce} from 'throttle-debounce';
 
@@ -15,8 +14,13 @@ export default class IngredientList extends React.Component {
     }
 
     handleUserInput(key, propName, value) {
-        this.state.ingredients[key][propName] = value;
-        this.forceUpdate();
+        let ingredients = this.state.ingredients.slice();
+        if (propName === 'name' || propName === 'caloricity') {
+            ingredients[key]['product'][propName] = value;
+        } else {
+            ingredients[key][propName] = value;
+        }
+        this.setState({ingredients});
         if (propName === 'name') {
             this.autoComplete(key, value);
         }
@@ -27,27 +31,30 @@ export default class IngredientList extends React.Component {
             url: '/products/index?search_phrase=' + searchPhrase,
             beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
             success: (found) => {
-                this.state.ingredients[key]['searchResults'] = found;
-                this.forceUpdate();
+                let ingredients = this.state.ingredients.slice();
+                ingredients[key]['searchResults'] = found;
+                this.setState({ingredients});
             }
             // @TODO: handle error
         });
     }
 
     handleSelect(key, option) {
-        this.state.ingredients[key]['name'] = option['name'];
-        this.state.ingredients[key]['caloricity'] = option['caloricity'];
-        if (this.state.ingredients[key]['productId'] !== option['id']) {
-            this.state.ingredients[key]['productId'] = option['id'];
-            this.state.ingredients[key]['ingredientId'] = '';
+        let ingredients = this.state.ingredients.slice();
+        ingredients[key]['product']['name'] = option['name'];
+        ingredients[key]['product']['caloricity'] = option['caloricity'];
+        if (ingredients[key]['product']['id'] !== option['id']) {
+            ingredients[key]['product']['id'] = option['id'];
+            ingredients[key]['id'] = '';
         }
-        delete this.state.ingredients[key].searchResults;
-        this.forceUpdate();
+        delete ingredients[key].searchResults;
+        this.setState({ingredients});
     }
 
     removeIngredient(key) {
-        delete this.state.ingredients[key];
-        this.setState({elementRemovable: this.isElementRemovable()});
+        let ingredients = this.state.ingredients.slice();
+        delete ingredients[key];
+        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable()});
     }
 
     newIngredientHighlight() {
@@ -66,8 +73,9 @@ export default class IngredientList extends React.Component {
     }
 
     addNewIngredient() {
-        this.state.ingredients.push({className: this.newIngredientHighlight()});
-        this.setState({elementRemovable: this.isElementRemovable()});
+        let ingredients = this.state.ingredients.slice();
+        ingredients.push({product: {id: '', name: '', caloricity: ''}, className: this.newIngredientHighlight()});
+        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable()});
     }
 
     isElementRemovable() {
@@ -78,11 +86,11 @@ export default class IngredientList extends React.Component {
         return this.state.ingredients.map((ingredient, key) => {
             // @TODO simplify this mapping, maybe no reason to use a key
             let props = {
-                name: ingredient.name,
-                caloricity: ingredient.caloricity,
+                name: ingredient.product.name,
+                caloricity: ingredient.product.caloricity,
                 weight: ingredient.weight,
-                ingredientId: ingredient.ingredientId,
-                productId: ingredient.productId,
+                ingredientId: ingredient.id,
+                productId: ingredient.product.id,
                 onUserInput: (key, propName, value) => this.handleUserInput(key, propName, value),
                 removeIngredient: key => this.removeIngredient(key),
                 keyId: key,
@@ -114,19 +122,3 @@ export default class IngredientList extends React.Component {
         </div>;
     }
 }
-
-document.addEventListener('turbolinks:load', function () {
-    const ingredientsContainer = document.getElementById('ingredients');
-    if (ingredientsContainer) {
-        let ingredients = [];
-        JSON.parse(ingredientsContainer.getAttribute('data-ingredients'))
-            .forEach(e => ingredients.push({weight: e['weight'], ingredientId: e['id']}));
-        JSON.parse(ingredientsContainer.getAttribute('data-products'))
-            .forEach((e, i) => {
-                ingredients[i]['name'] = e['name'];
-                ingredients[i]['productId'] = e['id'];
-                ingredients[i]['caloricity'] = e['caloricity'];
-            });
-        ReactDOM.render(<IngredientList ingredients={ingredients}/>, ingredientsContainer);
-    }
-});
