@@ -1,8 +1,7 @@
 import ReactS3Uploader from 'react-s3-uploader';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class Uploader extends React.Component {
+export default class Uploader extends React.Component {
 
     constructor(props) {
         super(props);
@@ -100,15 +99,3 @@ class Uploader extends React.Component {
         </div>;
     }
 }
-
-
-document.addEventListener('turbolinks:load', function () {
-    const recipe_image_uploader = document.getElementById('recipe_image_uploader');
-    if (recipe_image_uploader) {
-        let props = {
-            name: recipe_image_uploader.getAttribute('data-name'),
-            value: recipe_image_uploader.getAttribute('data-value'),
-        };
-        ReactDOM.render(<Uploader {...props}/>, recipe_image_uploader);
-    }
-});
