@@ -8,8 +8,8 @@ export default class IngredientList extends React.Component {
         super(props);
         this.state = {
             ingredients: props.ingredients,
+            elementRemovable: this.isElementRemovable(props.ingredients)
         };
-        this.state['elementRemovable'] = this.isElementRemovable();
         this.autoComplete = debounce(250, this.autoComplete);
     }
 
@@ -54,7 +54,7 @@ export default class IngredientList extends React.Component {
     removeIngredient(key) {
         let ingredients = this.state.ingredients.slice();
         delete ingredients[key];
-        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable()});
+        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable(ingredients)});
     }
 
     newIngredientHighlight() {
@@ -75,11 +75,11 @@ export default class IngredientList extends React.Component {
     addNewIngredient() {
         let ingredients = this.state.ingredients.slice();
         ingredients.push({product: {id: '', name: '', caloricity: ''}, className: this.newIngredientHighlight()});
-        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable()});
+        this.setState({ingredients: ingredients, elementRemovable: this.isElementRemovable(ingredients)});
     }
 
-    isElementRemovable() {
-        return this.state.ingredients.filter(e => e).length > 1;
+    isElementRemovable(ingredients) {
+        return ingredients.filter(e => e).length > 1;
     }
 
     renderIngredients() {

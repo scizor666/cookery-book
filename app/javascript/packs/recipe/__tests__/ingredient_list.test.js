@@ -2,7 +2,7 @@ import React from 'react';
 import IngredientList from '../ingredient_list';
 import Ingredient from '../ingredient';
 import renderer from 'react-test-renderer';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 
 const ingredients = [
     {
@@ -32,12 +32,30 @@ test('ingredient list displayed', () => {
     expect(tree).toMatchSnapshot();
 });
 
-test('new ingredient component added', () => {
-    const ingredientList = shallow(
+test('add a new ingredient', () => {
+    const ingredientList = mount(
+        <IngredientList ingredients={ingredients.slice(0, 1)}/>
+    );
+    expect(ingredientList.find(Ingredient).length).toBe(1);
+    expect(ingredientList.find(Ingredient).at(0).find('.remove-ingredient').props()['style']['display']).toBe('none');
+
+    ingredientList.find('#add_new_ingredient').simulate('click');
+    expect(ingredientList.find(Ingredient).length).toBe(2);
+    ingredientList.find(Ingredient).forEach(i => {
+        expect(i.find('.remove-ingredient').props()['style']['display']).toBe('block');
+    });
+});
+
+test('remove an ingredient', () => {
+    const ingredientList = mount(
         <IngredientList ingredients={ingredients}/>
     );
     expect(ingredientList.find(Ingredient).length).toBe(2);
+    ingredientList.find(Ingredient).forEach(i => {
+        expect(i.find('.remove-ingredient').props()['style']['display']).toBe('block');
+    });
 
-    ingredientList.find('#add_new_ingredient').simulate('click');
-    expect(ingredientList.find(Ingredient).length).toBe(3);
+    ingredientList.find('.remove-ingredient').at(0).simulate('click');
+    expect(ingredientList.find(Ingredient).length).toBe(1);
+    expect(ingredientList.find(Ingredient).at(0).find('.remove-ingredient').props()['style']['display']).toBe('none');
 });
