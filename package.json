@@ -1,6 +1,9 @@
 {
   "name": "recipe-calorocity",
   "private": true,
+  "description": "Cookery book demo project which bundles rails & react",
+  "author": "Alexander Teplyashin @scizor666",
+  "bugs": "https://github.com/scizor666/cookery-book/issues",
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",
@@ -59,5 +62,6 @@
     "roots": [
       "<rootDir>/app/javascript/packs"
     ]
-  }
+  },
+  "license": "GPL-3.0"
 }
