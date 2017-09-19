@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display for a not empty search results list 1`] = `
+<div
+  id="autocomplete-items-container"
+>
+  <ul
+    id="autocomplete-items"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <li
+      className="autocomplete-item"
+      onClick={[Function]}
+    >
+      <span>
+        <b>
+          some name
+        </b>
+         Caloricity: 
+        100.99
+         kcal/100g
+      </span>
+    </li>
+    <li
+      className="autocomplete-item"
+      onClick={[Function]}
+    >
+      <span>
+        <b>
+          one more result
+        </b>
+         Caloricity: 
+        66.12
+         kcal/100g
+      </span>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`display for an empty search results list 1`] = `
+<div
+  id="autocomplete-items-container"
+>
+  <ul
+    id="autocomplete-items"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <li>
+      No products found
+    </li>
+  </ul>
+</div>
+`;

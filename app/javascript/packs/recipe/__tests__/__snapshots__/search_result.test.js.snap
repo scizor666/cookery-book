@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display a search result 1`] = `
+<li
+  className="autocomplete-item"
+  onClick={[Function]}
+>
+  <span>
+    <b>
+      some name
+    </b>
+     Caloricity: 
+    100.99
+     kcal/100g
+  </span>
+</li>
+`;
