@@ -4,7 +4,7 @@ import Ingredient from '../ingredient';
 import renderer from 'react-test-renderer';
 import {mount, shallow} from 'enzyme';
 
-const ingredients = [
+export const ingredients = [
     {
         weight: 300,
         id: 1,
@@ -28,8 +28,7 @@ test('ingredient list displayed', () => {
     const ingredientList = renderer.create(
         <IngredientList ingredients={ingredients}/>
     );
-    const tree = ingredientList.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(ingredientList.toJSON()).toMatchSnapshot();
 });
 
 test('add a new ingredient', () => {

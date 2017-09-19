@@ -23,12 +23,13 @@ export default class RecipeForm extends React.Component {
     }
 
     renderActionMethod() {
-        if(this.isEditMode()){
+        if (this.isEditMode()) {
             return <input type="hidden" name="_method" defaultValue="patch"/>;
         }
     }
 
     render() {
+
         return <form className="form-recipe"
             id={this.formId()}
             action={this.action()}
@@ -37,7 +38,7 @@ export default class RecipeForm extends React.Component {
             <input name="utf8" type="hidden" defaultValue="&#x2713;"/>
             <input type="hidden"
                 name="authenticity_token"
-                defaultValue={$('meta[name="csrf-token"]').attr('content')}/>
+                defaultValue={this.props.csrfToken}/>
             {this.renderActionMethod()}
             <div className='row'>
                 <h2 className='form-recipe-heading text-center col-md-12'>{this.props.header}</h2>
@@ -84,6 +85,7 @@ document.addEventListener('turbolinks:load', function () {
         ReactDOM.render(<RecipeForm
             header={recipeFormContainer.getAttribute('data-header')}
             action={recipeFormContainer.getAttribute('data-action')}
+            csrfToken={document.querySelector('meta[name="csrf-token"]').content}
             recipe={JSON.parse(recipeFormContainer.getAttribute('data-recipe'))}/>, recipeFormContainer);
     }
 });

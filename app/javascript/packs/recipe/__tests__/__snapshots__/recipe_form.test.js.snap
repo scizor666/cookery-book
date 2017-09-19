@@ -1,0 +1,671 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display recipe form 1`] = `
+<form
+  acceptCharset="UTF-8"
+  action="/catalogs/500/recipe/100"
+  className="form-recipe"
+  id="edit_recipe_100"
+  method="post"
+>
+  <input
+    defaultValue="✓"
+    name="utf8"
+    type="hidden"
+  />
+  <input
+    defaultValue="someToken"
+    name="authenticity_token"
+    type="hidden"
+  />
+  <input
+    defaultValue="patch"
+    name="_method"
+    type="hidden"
+  />
+  <div
+    className="row"
+  >
+    <h2
+      className="form-recipe-heading text-center col-md-12"
+    >
+      Edit Recipe
+    </h2>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="form-group col-md-4 mx-auto"
+    >
+      <label
+        className="sr-only"
+        htmlFor="recipe_name"
+      >
+        Name
+      </label>
+      <input
+        autoFocus={true}
+        className="form-control"
+        defaultValue="product name here"
+        id="first"
+        name="recipe[name]"
+        placeholder="Recipe name"
+        required="required"
+        type="text"
+      />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="form-group col-md-6 mx-auto"
+    >
+      <label
+        htmlFor="recipe_short_description"
+      >
+        Short description
+      </label>
+      <textarea
+        className="form-control"
+        defaultValue="short product description here"
+        id="recipe_short_description"
+        maxLength="150"
+        name="recipe[short_description]"
+        placeholder="short description"
+        rows="3"
+      />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <div>
+        <label
+          className="btn btn-primary"
+        >
+          <input
+            accept="image/*"
+            hidden={true}
+            onChange={[Function]}
+            type="file"
+          />
+          Add a Picture
+        </label>
+         
+        File not chosen
+        <input
+          hidden={true}
+          name="recipe[image_url]"
+          value={undefined}
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="ingredient"
+    >
+      <label>
+        <b>
+          Ingredient
+        </b>
+      </label>
+      <div
+        className="row"
+      >
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_product__name"
+          >
+            Name
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control product-name"
+            data-name="name"
+            id="recipe_product__name"
+            name="recipe[product][][name]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="name"
+            required="required"
+            type="text"
+            value="carrot"
+          />
+        </div>
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_product__caloricity"
+          >
+            Caloricity, kcal/100g
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control product-caloricity"
+            data-name="caloricity"
+            id="recipe_product__caloricity"
+            min="0"
+            name="recipe[product][][caloricity]"
+            onChange={[Function]}
+            placeholder="caloricity"
+            required="required"
+            step="any"
+            type="number"
+            value={44}
+          />
+          <input
+            className="product-id"
+            defaultValue={1}
+            id="recipe_product__id"
+            name="recipe[product][][id]"
+            type="hidden"
+          />
+        </div>
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_ingredient__weight"
+          >
+            Weight, g
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control ingredient-weight"
+            data-name="weight"
+            id="recipe_ingredient__weight"
+            min="0"
+            name="recipe[ingredient][][weight]"
+            onChange={[Function]}
+            placeholder="weight"
+            required="required"
+            step="any"
+            type="number"
+            value={300}
+          />
+          <input
+            defaultValue=""
+            id="recipe_ingredient__id"
+            name="recipe[ingredient][][id]"
+            type="hidden"
+          />
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <a
+            className="remove-ingredient"
+            href="javascript:void(0);"
+            onClick={[Function]}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <i
+              className="fa fa-minus fa-2x pull-right"
+              style={
+                Object {
+                  "color": "red",
+                }
+              }
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ingredient"
+    >
+      <label>
+        <b>
+          Ingredient
+        </b>
+      </label>
+      <div
+        className="row"
+      >
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_product__name"
+          >
+            Name
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control product-name"
+            data-name="name"
+            id="recipe_product__name"
+            name="recipe[product][][name]"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="name"
+            required="required"
+            type="text"
+            value="carrot"
+          />
+        </div>
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_product__caloricity"
+          >
+            Caloricity, kcal/100g
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control product-caloricity"
+            data-name="caloricity"
+            id="recipe_product__caloricity"
+            min="0"
+            name="recipe[product][][caloricity]"
+            onChange={[Function]}
+            placeholder="caloricity"
+            required="required"
+            step="any"
+            type="number"
+            value={44}
+          />
+          <input
+            className="product-id"
+            defaultValue={1}
+            id="recipe_product__id"
+            name="recipe[product][][id]"
+            type="hidden"
+          />
+        </div>
+        <div
+          className="form-group col-md-4 col-sm-12"
+        >
+          <label
+            htmlFor="recipe_ingredient__weight"
+          >
+            Weight, g
+          </label>
+          <input
+            autoComplete="off"
+            className="form-control ingredient-weight"
+            data-name="weight"
+            id="recipe_ingredient__weight"
+            min="0"
+            name="recipe[ingredient][][weight]"
+            onChange={[Function]}
+            placeholder="weight"
+            required="required"
+            step="any"
+            type="number"
+            value={155}
+          />
+          <input
+            defaultValue={2}
+            id="recipe_ingredient__id"
+            name="recipe[ingredient][][id]"
+            type="hidden"
+          />
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <a
+            className="remove-ingredient"
+            href="javascript:void(0);"
+            onClick={[Function]}
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <i
+              className="fa fa-minus fa-2x pull-right"
+              style={
+                Object {
+                  "color": "red",
+                }
+              }
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row mt-4"
+    >
+      <div
+        className="col"
+      >
+        <a
+          href="javascript:void(0)"
+          id="add_new_ingredient"
+          onClick={[Function]}
+        >
+          <i
+            className="fa fa-plus fa-2x text-success pull-right top-aligned-row"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row mb-2"
+  >
+    <div
+      className="col"
+    >
+      <label
+        htmlFor="recipe_description"
+      >
+        Description
+      </label>
+      <textarea
+        className="form-control"
+        defaultValue="product description here"
+        id="recipe_description"
+        name="recipe[description]"
+        placeholder="description"
+        rows="5"
+      />
+    </div>
+  </div>
+  <div
+    className="form-group col-md-12 text-center"
+  >
+    <input
+      className="btn btn-lg btn-primary"
+      data-disable-with="Update Recipe"
+      name="commit"
+      type="submit"
+      value="Update Recipe"
+    />
+  </div>
+</form>
+`;
+
+exports[`ingredient list displayed 1`] = `
+<div>
+  <div
+    className="ingredient"
+  >
+    <label>
+      <b>
+        Ingredient
+      </b>
+    </label>
+    <div
+      className="row"
+    >
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_product__name"
+        >
+          Name
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control product-name"
+          data-name="name"
+          id="recipe_product__name"
+          name="recipe[product][][name]"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="name"
+          required="required"
+          type="text"
+          value="chicken"
+        />
+      </div>
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_product__caloricity"
+        >
+          Caloricity, kcal/100g
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control product-caloricity"
+          data-name="caloricity"
+          id="recipe_product__caloricity"
+          min="0"
+          name="recipe[product][][caloricity]"
+          onChange={[Function]}
+          placeholder="caloricity"
+          required="required"
+          step="any"
+          type="number"
+          value={107.7}
+        />
+        <input
+          className="product-id"
+          defaultValue={2}
+          id="recipe_product__id"
+          name="recipe[product][][id]"
+          type="hidden"
+        />
+      </div>
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_ingredient__weight"
+        >
+          Weight, g
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control ingredient-weight"
+          data-name="weight"
+          id="recipe_ingredient__weight"
+          min="0"
+          name="recipe[ingredient][][weight]"
+          onChange={[Function]}
+          placeholder="weight"
+          required="required"
+          step="any"
+          type="number"
+          value={300}
+        />
+        <input
+          defaultValue={1}
+          id="recipe_ingredient__id"
+          name="recipe[ingredient][][id]"
+          type="hidden"
+        />
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <a
+          className="remove-ingredient"
+          href="javascript:void(0);"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
+        >
+          <i
+            className="fa fa-minus fa-2x pull-right"
+            style={
+              Object {
+                "color": "red",
+              }
+            }
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="ingredient"
+  >
+    <label>
+      <b>
+        Ingredient
+      </b>
+    </label>
+    <div
+      className="row"
+    >
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_product__name"
+        >
+          Name
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control product-name"
+          data-name="name"
+          id="recipe_product__name"
+          name="recipe[product][][name]"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="name"
+          required="required"
+          type="text"
+          value="carrot"
+        />
+      </div>
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_product__caloricity"
+        >
+          Caloricity, kcal/100g
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control product-caloricity"
+          data-name="caloricity"
+          id="recipe_product__caloricity"
+          min="0"
+          name="recipe[product][][caloricity]"
+          onChange={[Function]}
+          placeholder="caloricity"
+          required="required"
+          step="any"
+          type="number"
+          value={44}
+        />
+        <input
+          className="product-id"
+          defaultValue={1}
+          id="recipe_product__id"
+          name="recipe[product][][id]"
+          type="hidden"
+        />
+      </div>
+      <div
+        className="form-group col-md-4 col-sm-12"
+      >
+        <label
+          htmlFor="recipe_ingredient__weight"
+        >
+          Weight, g
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control ingredient-weight"
+          data-name="weight"
+          id="recipe_ingredient__weight"
+          min="0"
+          name="recipe[ingredient][][weight]"
+          onChange={[Function]}
+          placeholder="weight"
+          required="required"
+          step="any"
+          type="number"
+          value={155}
+        />
+        <input
+          defaultValue={2}
+          id="recipe_ingredient__id"
+          name="recipe[ingredient][][id]"
+          type="hidden"
+        />
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <a
+          className="remove-ingredient"
+          href="javascript:void(0);"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
+        >
+          <i
+            className="fa fa-minus fa-2x pull-right"
+            style={
+              Object {
+                "color": "red",
+              }
+            }
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row mt-4"
+  >
+    <div
+      className="col"
+    >
+      <a
+        href="javascript:void(0)"
+        id="add_new_ingredient"
+        onClick={[Function]}
+      >
+        <i
+          className="fa fa-plus fa-2x text-success pull-right top-aligned-row"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
