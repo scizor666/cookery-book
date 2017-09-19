@@ -2,7 +2,7 @@ import React from 'react';
 import IngredientList from '../ingredient_list';
 import Ingredient from '../ingredient';
 import renderer from 'react-test-renderer';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 const ingredients = [
     {
@@ -28,7 +28,7 @@ test('ingredient list displayed', () => {
     const ingredientList = renderer.create(
         <IngredientList ingredients={ingredients}/>
     );
-    let tree = ingredientList.toJSON();
+    const tree = ingredientList.toJSON();
     expect(tree).toMatchSnapshot();
 });
 
@@ -58,4 +58,25 @@ test('remove an ingredient', () => {
     ingredientList.find('.remove-ingredient').at(0).simulate('click');
     expect(ingredientList.find(Ingredient).length).toBe(1);
     expect(ingredientList.find(Ingredient).at(0).find('.remove-ingredient').props()['style']['display']).toBe('none');
+});
+
+test('call autocomplete when name is changing', () => {
+    const ingredientList = shallow(<IngredientList ingredients={ingredients}/>);
+    ingredientList.instance().autoComplete = jest.fn();
+    ingredientList.update();
+    const ingredientKey = 0;
+    const searchPhrase = 'searchPhrase';
+    ingredientList.instance().handleUserInput(ingredientKey, 'name', searchPhrase);
+    expect(ingredientList.instance().autoComplete).toBeCalledWith(ingredientKey, searchPhrase);
+});
+
+test('select name for ingredient changes ingredient data', () => {
+    const ingredientList = shallow(<IngredientList ingredients={ingredients}/>);
+    const option = ingredients[1].product;
+    const ingredientKey = 0;
+    ingredientList.instance().handleSelect(ingredientKey, option);
+    const newIngredientState = ingredientList.state('ingredients')[ingredientKey];
+    expect(newIngredientState.product).toEqual(option);
+    expect(newIngredientState.id).toBe('');
+    expect(newIngredientState.searchResults).toBeUndefined();
 });
