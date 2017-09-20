@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display a recipe card with an image 1`] = `
+<div
+  className="h-100 card"
+>
+  <img
+    alt="Card image cap"
+    className="card-img-top"
+    onClick={[Function]}
+    src="http://some.url/with_picture.png"
+    width="100%"
+  />
+  <div
+    className="card-block"
+  >
+    <h4
+      className="card-title"
+    >
+      some recipe
+    </h4>
+    <p
+      className="card-text"
+    >
+      some short description here
+    </p>
+  </div>
+  <div
+    className="text-center card-footer"
+  >
+    <a
+      className="mr-5"
+      href="about:blank/recipe/123456"
+      title="Recipe"
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </a>
+    <a
+      className="mr-5"
+      href="about:blank/recipe/123456/edit"
+      title="Edit"
+    >
+      <i
+        className="fa fa-pencil"
+      />
+    </a>
+    <a
+      href="javascript:void(0);"
+      id="delete_recipe_123456"
+      onClick={[Function]}
+      title="Delete"
+    >
+      <i
+        className="fa fa-trash-o"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`display a recipe card without an image 1`] = `
+<div
+  className="h-100 card"
+>
+  <img
+    alt="Card image cap"
+    className="card-img-top"
+    onClick={[Function]}
+    src="http://some.placeholder.url/with_image.png"
+    width="100%"
+  />
+  <div
+    className="card-block"
+  >
+    <h4
+      className="card-title"
+    >
+      some other recipe
+    </h4>
+    <p
+      className="card-text"
+    >
+      some other short description here
+    </p>
+  </div>
+  <div
+    className="text-center card-footer"
+  >
+    <a
+      className="mr-5"
+      href="about:blank/recipe/678990"
+      title="Recipe"
+    >
+      <i
+        className="fa fa-eye"
+      />
+    </a>
+    <a
+      className="mr-5"
+      href="about:blank/recipe/678990/edit"
+      title="Edit"
+    >
+      <i
+        className="fa fa-pencil"
+      />
+    </a>
+    <a
+      href="javascript:void(0);"
+      id="delete_recipe_678990"
+      onClick={[Function]}
+      title="Delete"
+    >
+      <i
+        className="fa fa-trash-o"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`display a recipe list 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-4 mt-2"
+  >
+    <div
+      className="h-100 card"
+    >
+      <img
+        alt="Card image cap"
+        className="card-img-top"
+        onClick={[Function]}
+        src="http://some.url/with_picture.png"
+        width="100%"
+      />
+      <div
+        className="card-block"
+      >
+        <h4
+          className="card-title"
+        >
+          some recipe
+        </h4>
+        <p
+          className="card-text"
+        >
+          some short description here
+        </p>
+      </div>
+      <div
+        className="text-center card-footer"
+      >
+        <a
+          className="mr-5"
+          href="about:blank/recipe/123456"
+          title="Recipe"
+        >
+          <i
+            className="fa fa-eye"
+          />
+        </a>
+        <a
+          className="mr-5"
+          href="about:blank/recipe/123456/edit"
+          title="Edit"
+        >
+          <i
+            className="fa fa-pencil"
+          />
+        </a>
+        <a
+          href="javascript:void(0);"
+          id="delete_recipe_123456"
+          onClick={[Function]}
+          title="Delete"
+        >
+          <i
+            className="fa fa-trash-o"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="col-md-4 mt-2"
+  >
+    <div
+      className="h-100 card"
+    >
+      <img
+        alt="Card image cap"
+        className="card-img-top"
+        onClick={[Function]}
+        src="/placeholder-320x240.png"
+        width="100%"
+      />
+      <div
+        className="card-block"
+      >
+        <h4
+          className="card-title"
+        >
+          some other recipe
+        </h4>
+        <p
+          className="card-text"
+        >
+          some other short description here
+        </p>
+      </div>
+      <div
+        className="text-center card-footer"
+      >
+        <a
+          className="mr-5"
+          href="about:blank/recipe/678990"
+          title="Recipe"
+        >
+          <i
+            className="fa fa-eye"
+          />
+        </a>
+        <a
+          className="mr-5"
+          href="about:blank/recipe/678990/edit"
+          title="Edit"
+        >
+          <i
+            className="fa fa-pencil"
+          />
+        </a>
+        <a
+          href="javascript:void(0);"
+          id="delete_recipe_678990"
+          onClick={[Function]}
+          title="Delete"
+        >
+          <i
+            className="fa fa-trash-o"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import React from 'react';
-import RecipeCard from './recipe';
+import RecipeCard from './recipe_card';
 
 export default class RecipeList extends React.Component {
 

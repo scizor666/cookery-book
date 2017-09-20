@@ -4,7 +4,7 @@ import RecipeList from './recipe_list';
 import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
 
-class Catalog extends React.Component {
+export default class Catalog extends React.Component {
 
     constructor(props) {
         super(props);
