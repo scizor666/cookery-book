@@ -10,3 +10,4 @@
 import './recipe/recipe_form'
 import './catalog/catalog'
 import './recipe/recipe'
+import './login/sign_in_form'

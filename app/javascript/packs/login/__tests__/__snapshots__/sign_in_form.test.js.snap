@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display when loading 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-3 col-md-offset-3 container"
+  >
+    <h1
+      className="text-center"
+    >
+      Log in
+    </h1>
+    <form
+      acceptCharset="UTF-8"
+      action="/login"
+      method="post"
+    >
+      <input
+        name="utf8"
+        type="hidden"
+        value="✓"
+      />
+      <input
+        name="authenticity_token"
+        type="hidden"
+        value="someTokenValueHere"
+      />
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="session_email"
+        >
+          Email
+        </label>
+        <input
+          className="form-control"
+          id="session_email"
+          name="session[email]"
+          type="email"
+        />
+        <label
+          htmlFor="session_password"
+        >
+          Password
+        </label>
+        <input
+          className="form-control"
+          id="session_password"
+          name="session[password]"
+          type="password"
+        />
+        <label
+          className="checkbox inline"
+          htmlFor="session_remember_me"
+        >
+          <input
+            name="session[remember_me]"
+            type="hidden"
+            value="0"
+          />
+          <input
+            id="session_remember_me"
+            name="session[remember_me]"
+            type="checkbox"
+            value="1"
+          />
+          <span>
+            Remember me on this computer
+          </span>
+        </label>
+      </div>
+      <div
+        className="form-group col-md-12 text-center"
+      >
+        <input
+          className="btn btn-primary"
+          data-disable-with="Log in"
+          name="commit"
+          type="submit"
+          value="Log in"
+        />
+      </div>
+      New user? 
+      <a
+        href="/users/new"
+      >
+        Sign up now!
+      </a>
+    </form>
+  </div>
+</div>
+`;
