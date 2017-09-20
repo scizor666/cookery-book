@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display ingredient actions 1`] = `
+<div
+  className="col"
+>
+  <div
+    className="recipe-actions"
+  >
+    <a
+      className="mr-3"
+      href="/catalogs/123123"
+      title="Back"
+    >
+      <i
+        className="fa fa-long-arrow-left"
+      />
+    </a>
+    <a
+      className="mr-3"
+      href="/catalogs/123123/recipe/456456/edit"
+      title="Edit"
+    >
+      <i
+        className="fa fa-pencil"
+      />
+    </a>
+    <a
+      href="javascript:void(0);"
+      id="delete_recipe"
+      onClick={[Function]}
+      title="Delete"
+    >
+      <i
+        className="fa fa-trash-o"
+      />
+    </a>
+  </div>
+</div>
+`;

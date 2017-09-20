@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display a recipe 1`] = `
+<div
+  className="main"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col col-auto"
+    >
+      <h1>
+        product name here
+      </h1>
+    </div>
+    <RecipeActions
+      recipe={
+        Object {
+          "caloricity": 666,
+          "catalog_id": 500,
+          "description": "product description here",
+          "id": 100,
+          "image_url": "http://some.test.url/with_image.png",
+          "ingredients": Array [
+            Object {
+              "id": 1,
+              "product": Object {
+                "caloricity": 107.7,
+                "id": 2,
+                "name": "chicken",
+              },
+              "weight": 300,
+            },
+            Object {
+              "id": 2,
+              "product": Object {
+                "caloricity": 44,
+                "id": 1,
+                "name": "carrot",
+              },
+              "weight": 155,
+            },
+          ],
+          "name": "product name here",
+          "short_description": "short product description here",
+        }
+      }
+    />
+  </div>
+  <div
+    className="collapse show"
+    id="recipe_details_47"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-sm-12 col-md-6"
+      >
+        <div
+          className="lead"
+        >
+          short product description here
+        </div>
+        <img
+          alt="No picture found"
+          className="w-100"
+          src="http://some.test.url/with_image.png"
+        />
+      </div>
+      <IngredientsTable
+        caloricity={666}
+        ingredients={
+          Array [
+            Object {
+              "id": 1,
+              "product": Object {
+                "caloricity": 107.7,
+                "id": 2,
+                "name": "chicken",
+              },
+              "weight": 300,
+            },
+            Object {
+              "id": 2,
+              "product": Object {
+                "caloricity": 44,
+                "id": 1,
+                "name": "carrot",
+              },
+              "weight": 155,
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <p
+          className="recipe-description lead"
+        >
+          product description here
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

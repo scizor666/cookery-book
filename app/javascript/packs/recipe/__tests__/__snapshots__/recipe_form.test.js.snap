@@ -101,7 +101,7 @@ exports[`display recipe form 1`] = `
         <input
           hidden={true}
           name="recipe[image_url]"
-          value={undefined}
+          value="http://some.test.url/with_image.png"
         />
       </div>
     </div>
@@ -138,7 +138,7 @@ exports[`display recipe form 1`] = `
             placeholder="name"
             required="required"
             type="text"
-            value="carrot"
+            value="chicken"
           />
         </div>
         <div
@@ -161,11 +161,11 @@ exports[`display recipe form 1`] = `
             required="required"
             step="any"
             type="number"
-            value={44}
+            value={107.7}
           />
           <input
             className="product-id"
-            defaultValue={1}
+            defaultValue={2}
             id="recipe_product__id"
             name="recipe[product][][id]"
             type="hidden"
@@ -194,7 +194,7 @@ exports[`display recipe form 1`] = `
             value={300}
           />
           <input
-            defaultValue=""
+            defaultValue={1}
             id="recipe_ingredient__id"
             name="recipe[ingredient][][id]"
             type="hidden"
@@ -402,270 +402,4 @@ exports[`display recipe form 1`] = `
     />
   </div>
 </form>
-`;
-
-exports[`ingredient list displayed 1`] = `
-<div>
-  <div
-    className="ingredient"
-  >
-    <label>
-      <b>
-        Ingredient
-      </b>
-    </label>
-    <div
-      className="row"
-    >
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_product__name"
-        >
-          Name
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control product-name"
-          data-name="name"
-          id="recipe_product__name"
-          name="recipe[product][][name]"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="name"
-          required="required"
-          type="text"
-          value="chicken"
-        />
-      </div>
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_product__caloricity"
-        >
-          Caloricity, kcal/100g
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control product-caloricity"
-          data-name="caloricity"
-          id="recipe_product__caloricity"
-          min="0"
-          name="recipe[product][][caloricity]"
-          onChange={[Function]}
-          placeholder="caloricity"
-          required="required"
-          step="any"
-          type="number"
-          value={107.7}
-        />
-        <input
-          className="product-id"
-          defaultValue={2}
-          id="recipe_product__id"
-          name="recipe[product][][id]"
-          type="hidden"
-        />
-      </div>
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_ingredient__weight"
-        >
-          Weight, g
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control ingredient-weight"
-          data-name="weight"
-          id="recipe_ingredient__weight"
-          min="0"
-          name="recipe[ingredient][][weight]"
-          onChange={[Function]}
-          placeholder="weight"
-          required="required"
-          step="any"
-          type="number"
-          value={300}
-        />
-        <input
-          defaultValue={1}
-          id="recipe_ingredient__id"
-          name="recipe[ingredient][][id]"
-          type="hidden"
-        />
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col"
-      >
-        <a
-          className="remove-ingredient"
-          href="javascript:void(0);"
-          onClick={[Function]}
-          style={
-            Object {
-              "display": "block",
-            }
-          }
-        >
-          <i
-            className="fa fa-minus fa-2x pull-right"
-            style={
-              Object {
-                "color": "red",
-              }
-            }
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    className="ingredient"
-  >
-    <label>
-      <b>
-        Ingredient
-      </b>
-    </label>
-    <div
-      className="row"
-    >
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_product__name"
-        >
-          Name
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control product-name"
-          data-name="name"
-          id="recipe_product__name"
-          name="recipe[product][][name]"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          placeholder="name"
-          required="required"
-          type="text"
-          value="carrot"
-        />
-      </div>
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_product__caloricity"
-        >
-          Caloricity, kcal/100g
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control product-caloricity"
-          data-name="caloricity"
-          id="recipe_product__caloricity"
-          min="0"
-          name="recipe[product][][caloricity]"
-          onChange={[Function]}
-          placeholder="caloricity"
-          required="required"
-          step="any"
-          type="number"
-          value={44}
-        />
-        <input
-          className="product-id"
-          defaultValue={1}
-          id="recipe_product__id"
-          name="recipe[product][][id]"
-          type="hidden"
-        />
-      </div>
-      <div
-        className="form-group col-md-4 col-sm-12"
-      >
-        <label
-          htmlFor="recipe_ingredient__weight"
-        >
-          Weight, g
-        </label>
-        <input
-          autoComplete="off"
-          className="form-control ingredient-weight"
-          data-name="weight"
-          id="recipe_ingredient__weight"
-          min="0"
-          name="recipe[ingredient][][weight]"
-          onChange={[Function]}
-          placeholder="weight"
-          required="required"
-          step="any"
-          type="number"
-          value={155}
-        />
-        <input
-          defaultValue={2}
-          id="recipe_ingredient__id"
-          name="recipe[ingredient][][id]"
-          type="hidden"
-        />
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col"
-      >
-        <a
-          className="remove-ingredient"
-          href="javascript:void(0);"
-          onClick={[Function]}
-          style={
-            Object {
-              "display": "block",
-            }
-          }
-        >
-          <i
-            className="fa fa-minus fa-2x pull-right"
-            style={
-              Object {
-                "color": "red",
-              }
-            }
-          />
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    className="row mt-4"
-  >
-    <div
-      className="col"
-    >
-      <a
-        href="javascript:void(0)"
-        id="add_new_ingredient"
-        onClick={[Function]}
-      >
-        <i
-          className="fa fa-plus fa-2x text-success pull-right top-aligned-row"
-        />
-      </a>
-    </div>
-  </div>
-</div>
 `;

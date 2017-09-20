@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display row ingredient 1`] = `
+<tr>
+  <td
+    className="ingredient-word-breaks"
+  >
+    chicken
+  </td>
+  <td>
+    300
+  </td>
+  <td>
+    107.7
+  </td>
+</tr>
+`;

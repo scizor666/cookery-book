@@ -107,11 +107,3 @@ export const confirmRecipeDelete = function (recipe) {
         return this;
     });
 };
-document.addEventListener('turbolinks:load', () => {
-    const data = $('body').data();
-    if (data.controller === 'recipe' && data.action === 'show') {
-        document.getElementById('delete_recipe').addEventListener('click', function () {
-            confirmRecipeDelete($('#recipe_data').data('recipe'));
-        }, false);
-    }
-});

@@ -1,2 +1,1 @@
-=render partial: 'recipe/recipe'
-%div#recipe_data{data: {recipe: @recipe.to_json}}
+#recipe_container{data: {recipe: raw(@recipe.to_json(include: { ingredients: { include: :product} }))}}

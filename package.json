@@ -61,7 +61,8 @@
   "jest": {
     "roots": [
       "<rootDir>/app/javascript/packs"
-    ]
+    ],
+    "testRegex": "/__tests__/.*test\\.jsx?$"
   },
   "license": "GPL-3.0"
 }
