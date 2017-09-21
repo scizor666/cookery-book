@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if logged_in?
       redirect_to current_user.catalog
     else
-      render :new
+      fallback_index
     end
   end
 
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_back_or @user.catalog
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      render :new
+      fallback_index
     end
   end
 

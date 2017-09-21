@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate!, except: %i[new create]
   include SessionsHelper
 
+  def fallback_index
+    render 'application/index'
+  end
+
   private
 
   def admin_user

@@ -1,14 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class SignInForm extends React.Component {
+
+    csrfToken() {
+        return document.querySelector('meta[name="csrf-token"]').content;
+    }
+
     render() {
         return <div className='row'>
             <div className='col-md-3 col-md-offset-3 container'>
                 <h1 className='text-center'>Log in</h1>
                 <form action="/login" acceptCharset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="&#x2713;"/>
-                    <input type="hidden" name="authenticity_token" value={this.props.csrfToken}/>
+                    <input type="hidden" name="authenticity_token" value={this.csrfToken()}/>
                     <div className='form-group'>
                         <label htmlFor="session_email">Email</label>
                         <input className="form-control" type="email" name="session[email]" id="session_email"/>
@@ -30,11 +34,3 @@ export default class SignInForm extends React.Component {
         </div>;
     }
 }
-
-document.addEventListener('turbolinks:load', function () {
-    const catalogContainer = document.getElementById('sign_in_form');
-    if (catalogContainer) {
-        ReactDOM.render(<SignInForm csrfToken={document.querySelector('meta[name="csrf-token"]').content}/>,
-            catalogContainer);
-    }
-});

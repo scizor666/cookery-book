@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  get 'home/index'
-
   root 'sessions#new'
+
+  get '*path', to: 'application#fallback_index',
+               constraints: ->(request) { !request.xhr? && request.format.html? }
 end
