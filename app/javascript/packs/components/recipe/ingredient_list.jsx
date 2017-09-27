@@ -1,6 +1,7 @@
 import React from 'react';
 import Ingredient from './ingredient';
 import {debounce} from 'throttle-debounce';
+import CSRFToken from "../shared/csrf_token";
 
 export default class IngredientList extends React.Component {
 
@@ -29,7 +30,7 @@ export default class IngredientList extends React.Component {
     autoComplete(key, searchPhrase) {
         $.ajax({
             url: '/products/index?search_phrase=' + searchPhrase,
-            beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
+            beforeSend: xhr => xhr.setRequestHeader('X-CSRF-Token', CSRFToken.extractToken()),
             success: (found) => {
                 let ingredients = this.state.ingredients.slice();
                 ingredients[key]['searchResults'] = found;

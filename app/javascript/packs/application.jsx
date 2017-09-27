@@ -7,12 +7,12 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import './recipe/recipe_form';
-import './catalog/catalog';
-import './recipe/recipe';
+import './components/recipe/recipe_form';
+import './components/catalog/catalog';
+import './components/recipe/recipe';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignInForm from './login/sign_in_form';
+import SignInForm from './components/login/sign_in_form';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class App extends React.Component {

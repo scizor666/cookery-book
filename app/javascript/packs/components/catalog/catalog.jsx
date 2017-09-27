@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import RecipeList from './recipe_list';
 import InfiniteScroll from 'react-infinite-scroller';
 import PropTypes from 'prop-types';
+import CSRFToken from "../shared/csrf_token";
 
 export default class Catalog extends React.Component {
 
@@ -19,7 +20,7 @@ export default class Catalog extends React.Component {
         $.ajax({
             dataType: 'json',
             url: `${location.href}/recipe?page=${this.state.page}`,
-            beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
+            beforeSend: xhr => xhr.setRequestHeader('X-CSRF-Token', CSRFToken.extractToken()),
             success: (results) => {
                 this.setState({
                     recipes: this.state.recipes.concat(results),

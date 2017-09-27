@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Uploader from '../images/uploader';
 import IngredientList from './ingredient_list';
+import CSRFToken from "../shared/csrf_token";
 
 export default class RecipeForm extends React.Component {
 
@@ -36,9 +37,7 @@ export default class RecipeForm extends React.Component {
             acceptCharset="UTF-8"
             method="post">
             <input name="utf8" type="hidden" defaultValue="&#x2713;"/>
-            <input type="hidden"
-                name="authenticity_token"
-                defaultValue={this.props.csrfToken}/>
+            <CSRFToken/>
             {this.renderActionMethod()}
             <div className='row'>
                 <h2 className='form-recipe-heading text-center col-md-12'>{this.props.header}</h2>
@@ -85,7 +84,6 @@ document.addEventListener('turbolinks:load', function () {
         ReactDOM.render(<RecipeForm
             header={recipeFormContainer.getAttribute('data-header')}
             action={recipeFormContainer.getAttribute('data-action')}
-            csrfToken={document.querySelector('meta[name="csrf-token"]').content}
             recipe={JSON.parse(recipeFormContainer.getAttribute('data-recipe'))}/>, recipeFormContainer);
     }
 });

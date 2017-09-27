@@ -13,11 +13,7 @@ exports[`display recipe form 1`] = `
     name="utf8"
     type="hidden"
   />
-  <input
-    defaultValue="someToken"
-    name="authenticity_token"
-    type="hidden"
-  />
+  <CSRFToken />
   <input
     defaultValue="patch"
     name="_method"

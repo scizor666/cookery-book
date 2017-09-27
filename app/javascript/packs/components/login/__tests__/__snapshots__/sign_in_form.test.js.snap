@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`display when loading 1`] = `
+exports[`display sign in form 1`] = `
 <div
   className="row"
 >
@@ -22,11 +22,7 @@ exports[`display when loading 1`] = `
         type="hidden"
         value="✓"
       />
-      <input
-        name="authenticity_token"
-        type="hidden"
-        value="someTokenValueHere"
-      />
+      <CSRFToken />
       <div
         className="form-group"
       >

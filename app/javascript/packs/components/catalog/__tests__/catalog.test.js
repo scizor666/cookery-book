@@ -3,8 +3,9 @@ import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
 import {recipes} from './test_data';
 import RecipeCard from '../recipe_card';
-jest.mock('react-infinite-scroller', () => 'InfiniteScroll');
 import Catalog from '../catalog';
+
+jest.mock('react-infinite-scroller', () => 'InfiniteScroll');
 
 
 test('display when loading', () => {

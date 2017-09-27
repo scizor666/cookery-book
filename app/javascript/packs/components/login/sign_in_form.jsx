@@ -1,10 +1,7 @@
 import React from 'react';
+import CSRFToken from "../shared/csrf_token";
 
 export default class SignInForm extends React.Component {
-
-    csrfToken() {
-        return document.querySelector('meta[name="csrf-token"]').content;
-    }
 
     render() {
         return <div className='row'>
@@ -12,7 +9,7 @@ export default class SignInForm extends React.Component {
                 <h1 className='text-center'>Log in</h1>
                 <form action="/login" acceptCharset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="&#x2713;"/>
-                    <input type="hidden" name="authenticity_token" value={this.csrfToken()}/>
+                    <CSRFToken/>
                     <div className='form-group'>
                         <label htmlFor="session_email">Email</label>
                         <input className="form-control" type="email" name="session[email]" id="session_email"/>

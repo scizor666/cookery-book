@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './modal';
+import CSRFToken from "../shared/csrf_token";
 
 export default class Confirm extends React.Component {
 
@@ -100,7 +101,7 @@ export const confirmRecipeDelete = function (recipe) {
     }).then(() => {
         $.ajax({
             url: '/catalogs/' + recipe.catalog_id + '/recipe/' + recipe.id,
-            beforeSend: (xhr) => xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')),
+            beforeSend: xhr => xhr.setRequestHeader('X-CSRF-Token', CSRFToken.extractToken()),
             type: 'DELETE'
             // TODO handle error
         });
