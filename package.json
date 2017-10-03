@@ -30,10 +30,10 @@
     "precss": "^2.0.0",
     "prop-types": "^15.5.10",
     "rails-erb-loader": "^5.0.2",
-    "react": "^15.6.1",
+    "react": "16.0.0",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "react-dom": "16.0.0",
     "react-infinite-scroller": "^1.0.15",
     "react-router-dom": "^4.2.2",
     "react-s3-uploader": "^4.2.0",
@@ -49,11 +49,12 @@
   "devDependencies": {
     "babel-jest": "^21.0.0",
     "babel-preset-es2015": "^6.24.1",
-    "enzyme": "^2.9.1",
+    "enzyme": "3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.3.0",
     "jest": "^21.0.1",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "16.0.0",
     "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
@@ -63,7 +64,11 @@
     "roots": [
       "<rootDir>/app/javascript/packs"
     ],
-    "testRegex": "/__tests__/.*test\\.jsx?$"
+    "testRegex": "/__tests__/.*test\\.jsx?$",
+    "setupFiles": [
+      "<rootDir>/config/jest/shim.js",
+      "<rootDir>/config/jest/setup.js"
+    ]
   },
-  "license": "GPL-3.0"
+  "license": "MIT"
 }
