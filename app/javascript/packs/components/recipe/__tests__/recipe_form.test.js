@@ -10,6 +10,8 @@ test('display recipe form', () => {
         <RecipeForm recipe={recipe}
             header={'Edit Recipe'}
             action={'Update Recipe'}
+            editMode={true}
+            handleUserInput={jest.fn()}
         />
     );
     expect(recipeForm.toJSON()).toMatchSnapshot();

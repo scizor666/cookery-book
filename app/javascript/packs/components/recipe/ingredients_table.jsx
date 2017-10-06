@@ -1,7 +1,14 @@
 import React from 'react';
 import IngredientRow from './ingredient_row';
+import PropTypes from 'prop-types';
 
 export default class IngredientsTable extends React.Component {
+
+    static propTypes = {
+        caloricity: PropTypes.number.isRequired,
+        ingredients: PropTypes.array.isRequired
+    };
+
     render() {
         return <div className='col-sm-12 col-md-6'>
             <h2>Ingredients</h2>

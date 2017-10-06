@@ -6,10 +6,9 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
-import './components/recipe/recipe_form';
+import './components/recipe/recipe_form_container';
 import './components/catalog/catalog';
-import './components/recipe/recipe';
+import './components/recipe/recipe_container';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SignInForm from './components/login/sign_in_form';

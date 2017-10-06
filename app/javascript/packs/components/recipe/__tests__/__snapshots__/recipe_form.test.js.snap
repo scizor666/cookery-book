@@ -43,12 +43,14 @@ exports[`display recipe form 1`] = `
       <input
         autoFocus={true}
         className="form-control"
-        defaultValue="product name here"
+        data-name="name"
         id="first"
         name="recipe[name]"
+        onChange={[Function]}
         placeholder="Recipe name"
         required="required"
         type="text"
+        value="product name here"
       />
     </div>
   </div>
@@ -65,12 +67,14 @@ exports[`display recipe form 1`] = `
       </label>
       <textarea
         className="form-control"
-        defaultValue="short product description here"
+        data-name="short_description"
         id="recipe_short_description"
         maxLength="150"
         name="recipe[short_description]"
+        onChange={[Function]}
         placeholder="short description"
         rows="3"
+        value="short product description here"
       />
     </div>
   </div>
@@ -378,11 +382,13 @@ exports[`display recipe form 1`] = `
       </label>
       <textarea
         className="form-control"
-        defaultValue="product description here"
+        data-name="description"
         id="recipe_description"
         name="recipe[description]"
+        onChange={[Function]}
         placeholder="description"
         rows="5"
+        value="product description here"
       />
     </div>
   </div>

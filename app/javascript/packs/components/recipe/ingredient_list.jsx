@@ -1,9 +1,14 @@
 import React from 'react';
 import Ingredient from './ingredient';
 import {debounce} from 'throttle-debounce';
-import CSRFToken from "../shared/csrf_token";
+import CSRFToken from '../shared/csrf_token';
+import PropTypes from 'prop-types';
 
 export default class IngredientList extends React.Component {
+
+    static propTypes = {
+        ingredients: PropTypes.array.isRequired
+    };
 
     constructor(props) {
         super(props);
